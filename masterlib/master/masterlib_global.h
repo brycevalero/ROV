@@ -1,0 +1,12 @@
+#ifndef MASTERLIB_GLOBAL_H
+#define MASTERLIB_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(MASTERLIB_LIBRARY)
+#  define MASTERLIBSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define MASTERLIBSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // MASTERLIB_GLOBAL_H
