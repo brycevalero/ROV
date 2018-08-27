@@ -13,6 +13,14 @@ XKeyProtocol::XKeyProtocol()
 
 }
 
+/*-----------------------------------------------------------------+
+| Calculate checksum of payload for protocol
++------------------------------------------------------------------+
+| Parameters:
+|   payload (QByteArray): keys as a byte array
+| Return:
+|   crc (quint16): the checksum
++-----------------------------------------------------------------*/
 quint16 XKeyProtocol::calculateCRC(QByteArray payload)
 {
     quint16 crc = qChecksum(payload.data(), payload.length());
@@ -32,9 +40,9 @@ quint16 XKeyProtocol::calculateCRC(QByteArray payload)
 |   key (int): index of key within byte array
 |   payload (QByteArray): state of all keys
 | Return:
-|   void
+|   (QByteArray)
 +-----------------------------------------------------------------*/
-void XKeyProtocol::frameData(int key, int payloadLen, QByteArray payload)
+QByteArray XKeyProtocol::frameData(int key, int payloadLen, QByteArray payload)
 {
     quint16 crc = calculateCRC(payload);
 
@@ -50,8 +58,17 @@ void XKeyProtocol::frameData(int key, int payloadLen, QByteArray payload)
     data.append(XKey::HEX_ETX);
 
     emit dataFramed(data);
+    return data;
 }
 
+/*-----------------------------------------------------------------+
+| Extracts data from protocol
++------------------------------------------------------------------+
+| Parameters:
+|   data (QByteArray): keys as a byte array
+| Return:
+|   (void)
++-----------------------------------------------------------------*/
 void XKeyProtocol::extractData(QByteArray data)
 {
     int key = NULL;

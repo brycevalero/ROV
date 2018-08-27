@@ -22,7 +22,7 @@ public:
     quint16 calculateCRC(QByteArray payload);
 
 public slots:
-    void frameData(int key, int payloadLen, QByteArray payload);
+    QByteArray frameData(int key, int payloadLen, QByteArray payload);
     void extractData(QByteArray data);
 
 };
