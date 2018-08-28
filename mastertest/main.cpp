@@ -1,4 +1,5 @@
 #include "suite.h"
+#include <QDebug>
 #include <QtTest/QtTest>
 
 /*-----------------------------------------------------------------+

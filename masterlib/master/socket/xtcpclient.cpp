@@ -14,6 +14,15 @@ XTcpClient::XTcpClient(QObject *parent):
     mSocket = new QTcpSocket(this);
 }
 
+/*-----------------------------------------------------------------+
+| Connect to a host
++------------------------------------------------------------------+
+| Parameters:
+|   address (QHostAddress): an address
+|   port (quint16): a port
+| Return:
+|   (bool): connected
++-----------------------------------------------------------------*/
 bool XTcpClient::connectHost(QHostAddress address, quint16 port)
 {
     qDebug() << "Connecting to Host";
@@ -21,6 +30,14 @@ bool XTcpClient::connectHost(QHostAddress address, quint16 port)
     return mSocket->waitForConnected();
 }
 
+/*-----------------------------------------------------------------+
+| Write data to the socket
++------------------------------------------------------------------+
+| Parameters:
+|   data (QByteArray): byte array of data
+| Return:
+|   (bool): written
++-----------------------------------------------------------------*/
 bool XTcpClient::writeData(QByteArray data)
 {
     qDebug() << "Writing Data";

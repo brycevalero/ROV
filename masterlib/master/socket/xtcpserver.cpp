@@ -14,6 +14,15 @@ XTcpServer::XTcpServer(QObject *parent):
     mServer = new QTcpServer(this);
 }
 
+/*-----------------------------------------------------------------+
+| Listen at address on specific port
++------------------------------------------------------------------+
+| Parameters:
+|   address (QHostAddress): an address
+|   port (quint16): a port
+| Return:
+|   (bool): listening
++-----------------------------------------------------------------*/
 bool XTcpServer::listen(QHostAddress address, quint16 port)
 {
     connect(mServer, SIGNAL(newConnection()),
@@ -33,6 +42,14 @@ bool XTcpServer::listen(QHostAddress address, quint16 port)
     return listening;
 }
 
+/*-----------------------------------------------------------------+
+| Connect pending connections
++------------------------------------------------------------------+
+| Parameters:
+|   none
+| Return:
+|   (void)
++-----------------------------------------------------------------*/
 void XTcpServer::pendingConnection()
 {
     // need to grab the socket
@@ -42,6 +59,14 @@ void XTcpServer::pendingConnection()
     qDebug() << "Made a connection";
 }
 
+/*-----------------------------------------------------------------+
+| Read in the data to byte array
++------------------------------------------------------------------+
+| Parameters:
+|   none
+| Return:
+|   (void)
++-----------------------------------------------------------------*/
 void XTcpServer::readData()
 {
     qDebug() << "Reading data";
@@ -61,7 +86,6 @@ void XTcpServer::readData()
         emit gotData(buffer);
         buffer.clear();
     }
-
 
     socket->write("Hello client\r\n");
     socket->flush();

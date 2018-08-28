@@ -14,6 +14,14 @@ XUdpSocket::XUdpSocket(QObject *parent):
     mSocket = new QUdpSocket(this);
 }
 
+/*-----------------------------------------------------------------+
+| Bind to a socket at specific address/port
++------------------------------------------------------------------+
+| Parameters:
+|   address (XHostAddress): address/port paring
+| Return:
+|   (void)
++-----------------------------------------------------------------*/
 void XUdpSocket::initSocket(XHostAddress *address)
 {
     mSocket->bind(address->getAddress(), address->getPort());
@@ -22,6 +30,15 @@ void XUdpSocket::initSocket(XHostAddress *address)
             this, SLOT(readPendingDatagrams()));
 }
 
+/*-----------------------------------------------------------------+
+| Write data to socket
++------------------------------------------------------------------+
+| Parameters:
+|   data (QByteArray): data to send
+|   address (XHostAddress): address/port paring
+| Return:
+|   (void)
++-----------------------------------------------------------------*/
 bool XUdpSocket::writeData(QByteArray data, XHostAddress *address)
 {
 
@@ -40,6 +57,14 @@ bool XUdpSocket::writeData(QByteArray data, XHostAddress *address)
     return wroteData;
 }
 
+/*-----------------------------------------------------------------+
+| Read in the data to byte array
++------------------------------------------------------------------+
+| Parameters:
+|   none
+| Return:
+|   (void)
++-----------------------------------------------------------------*/
 void XUdpSocket::readPendingDatagrams()
 {
     while (mSocket->hasPendingDatagrams()) {
