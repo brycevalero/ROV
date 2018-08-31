@@ -2,11 +2,6 @@
 
 /*-----------------------------------------------------------------+
 | Constructor - correlates a key enum to a bit index for each key
-+------------------------------------------------------------------+
-| Parameters:
-|   none
-| Return:
-|   none
 +-----------------------------------------------------------------*/
 XKeyHandler::XKeyHandler()
 {
@@ -139,8 +134,6 @@ void XKeyHandler::setKeys(int key, QByteArray bytes)
 /*-----------------------------------------------------------------+
 | Gets the state of all keypresses within a byte array
 +------------------------------------------------------------------+
-| Parameters:
-|   none
 | Return:
 |   mKeysByteArray (QByteArray): state of all keys
 +-----------------------------------------------------------------*/

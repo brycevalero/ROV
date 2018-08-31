@@ -2,11 +2,6 @@
 
 /*-----------------------------------------------------------------+
 | Constructor
-+------------------------------------------------------------------+
-| Parameters:
-|   none
-| Return:
-|   none
 +-----------------------------------------------------------------*/
 XKeySettings::XKeySettings()
 {
@@ -16,12 +11,24 @@ XKeySettings::XKeySettings()
     saveSettings();
 }
 
+/*-----------------------------------------------------------------+
+| Load settings from ini file
++------------------------------------------------------------------+
+| Return:
+|   void
++-----------------------------------------------------------------*/
 void XKeySettings::loadSettings()
 {
     QSettings settings(mKeySettingsFile, QSettings::IniFormat);
 
 }
 
+/*-----------------------------------------------------------------+
+| Save settings to ini file
++------------------------------------------------------------------+
+| Return:
+|   void
++-----------------------------------------------------------------*/
 void XKeySettings::saveSettings()
 {
     QSettings settings(mKeySettingsFile, QSettings::IniFormat);

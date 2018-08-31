@@ -1,6 +1,8 @@
 #ifndef XUDPSOCKET_H
 #define XUDPSOCKET_H
 
+#include <QMutex>
+#include <QMutexLocker>
 #include <QObject>
 #include <QUdpSocket>
 
@@ -22,6 +24,7 @@ public slots:
     bool writeData(QByteArray data, XHostAddress *address);
 
 private:
+    QMutex mMutex;
     QUdpSocket *mSocket;
 
 };

@@ -4,9 +4,7 @@
 | Constructor
 +------------------------------------------------------------------+
 | Parameters:
-|   none
-| Return:
-|   none
+|   parent (QObject): parent object
 +-----------------------------------------------------------------*/
 XUdpSocket::XUdpSocket(QObject *parent):
     QObject(parent)
@@ -19,8 +17,6 @@ XUdpSocket::XUdpSocket(QObject *parent):
 +------------------------------------------------------------------+
 | Parameters:
 |   address (XHostAddress): address/port paring
-| Return:
-|   (void)
 +-----------------------------------------------------------------*/
 void XUdpSocket::initSocket(XHostAddress *address)
 {
@@ -37,36 +33,31 @@ void XUdpSocket::initSocket(XHostAddress *address)
 |   data (QByteArray): data to send
 |   address (XHostAddress): address/port paring
 | Return:
-|   (void)
+|   success (bool): whether it wrote data out to socket
 +-----------------------------------------------------------------*/
 bool XUdpSocket::writeData(QByteArray data, XHostAddress *address)
 {
-
-    bool wroteData = false;
+    QMutexLocker locker(&mMutex);
+    bool success = false;
 
     qint64 bytesSent = mSocket->writeDatagram(data, address->getAddress(), address->getPort());
 
     if(data.size() == bytesSent)
     {
-        wroteData = true;
+        success = true;
+        qDebug() << "Sending" << data << "to" << address->getAddress() << ":" << address->getPort();
     }
 
-    qDebug() << "Sending" << data << "to" << address->getAddress() << ":" << address->getPort();
-
-
-    return wroteData;
+    return success;
 }
 
 /*-----------------------------------------------------------------+
-| Read in the data to byte array
-+------------------------------------------------------------------+
-| Parameters:
-|   none
-| Return:
-|   (void)
+| Read in the data and emit signal with byte array data
 +-----------------------------------------------------------------*/
 void XUdpSocket::readPendingDatagrams()
 {
+    QMutexLocker locker(&mMutex);
+
     while (mSocket->hasPendingDatagrams()) {
 
         QByteArray datagram;

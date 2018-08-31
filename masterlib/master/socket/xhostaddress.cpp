@@ -2,11 +2,6 @@
 
 /*-----------------------------------------------------------------+
 | Constructor
-+------------------------------------------------------------------+
-| Parameters:
-|   none
-| Return:
-|   none
 +-----------------------------------------------------------------*/
 XHostAddress::XHostAddress()
 {
@@ -20,8 +15,6 @@ XHostAddress::XHostAddress()
 | Parameters:
 |   address (QHostAddress): an address
 |   port (quint16): a port
-| Return:
-|   none
 +-----------------------------------------------------------------*/
 XHostAddress::XHostAddress(QHostAddress address, quint16 port)
 {
@@ -32,8 +25,6 @@ XHostAddress::XHostAddress(QHostAddress address, quint16 port)
 /*-----------------------------------------------------------------+
 | Get address
 +------------------------------------------------------------------+
-| Parameters:
-|   none
 | Return:
 |   (QHostAddress)
 +-----------------------------------------------------------------*/
@@ -58,8 +49,6 @@ void XHostAddress::setAddress(QHostAddress address)
 /*-----------------------------------------------------------------+
 | Get port
 +------------------------------------------------------------------+
-| Parameters:
-|   none
 | Return:
 |   (quint16)
 +-----------------------------------------------------------------*/

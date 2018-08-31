@@ -3,11 +3,6 @@
 /*-----------------------------------------------------------------+
 | Constructor - creates a new connection for keys to be forwarded
 | onto.
-+------------------------------------------------------------------+
-| Parameters:
-|   none
-| Return:
-|   none
 +-----------------------------------------------------------------*/
 XKeyForwarder::XKeyForwarder()
 {

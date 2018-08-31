@@ -2,6 +2,8 @@
 #define XTCPCLIENT_H
 
 #include <QHostAddress>
+#include <QMutex>
+#include <QMutexLocker>
 #include <QObject>
 #include <QTcpSocket>
 
@@ -20,6 +22,7 @@ public slots:
     bool writeData(QByteArray data);
 
 private:
+    QMutex mMutex;
     QTcpSocket *mSocket;
 };
 

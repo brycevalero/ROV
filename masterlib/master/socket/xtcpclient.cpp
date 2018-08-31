@@ -4,9 +4,7 @@
 | Constructor
 +------------------------------------------------------------------+
 | Parameters:
-|   none
-| Return:
-|   none
+|   parent (QObject): parent object
 +-----------------------------------------------------------------*/
 XTcpClient::XTcpClient(QObject *parent):
     QObject(parent)
@@ -40,15 +38,16 @@ bool XTcpClient::connectHost(QHostAddress address, quint16 port)
 +-----------------------------------------------------------------*/
 bool XTcpClient::writeData(QByteArray data)
 {
-    qDebug() << "Writing Data";
+    QMutexLocker locker(&mMutex);
+    bool success = false;
+
+    //if we are connected, write and wait till finished
     if(mSocket->state() == QAbstractSocket::ConnectedState)
     {
-        //mSocket->write(IntToArray(data.size()));
-        mSocket->write(data); //write the data itself
-        return mSocket->waitForBytesWritten();
+        qDebug() << "Writing Data";
+        mSocket->write(data);
+        success = mSocket->waitForBytesWritten();
     }
-    else
-    {
-        return false;
-    }
+
+    return success;
 }
