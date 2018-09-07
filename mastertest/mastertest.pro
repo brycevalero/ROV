@@ -3,12 +3,14 @@ QT += network quick gui gamepad testlib
 SOURCES = main.cpp \
     suite.cpp \
     master/peripheral/keyboard/testkeyprotocol.cpp \
-    master/socket/testhostaddress.cpp
+    master/socket/testhostaddress.cpp \
+    master/peripheral/keyboard/testkeyhandler.cpp
 
 HEADERS = \
     master/peripheral/keyboard/testkeyprotocol.h \
     suite.h \
-    master/socket/testhostaddress.h
+    master/socket/testhostaddress.h \
+    master/peripheral/keyboard/testkeyhandler.h
 
 DEPENDPATH += . ../masterlib
 #Directory where the library headers are

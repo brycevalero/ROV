@@ -3,5 +3,21 @@
         <file>main.qml</file>
         <file>material/components/ActionButton.qml</file>
         <file>material/components/Card.qml</file>
+        <file>material/components/Compass.qml</file>
+        <file>material/views/CameraView.qml</file>
+        <file>material/views/DiagnosticView.qml</file>
+        <file>material/views/SettingsView.qml</file>
+        <file>material/controls/Button.qml</file>
+        <file>material/controls/CheckBox.qml</file>
+        <file>material/controls/Label.qml</file>
+        <file>material/controls/ProgressBar.qml</file>
+        <file>material/controls/RadioButton.qml</file>
+        <file>material/controls/Slider.qml</file>
+        <file>material/controls/Switch.qml</file>
+        <file>material/components/DatePicker.qml</file>
+        <file>material/components/IconButton.qml</file>
+        <file>material/components/Divider.qml</file>
+        <file>material/controls/TextArea.qml</file>
+        <file>material/controls/TextField.qml</file>
     </qresource>
 </RCC>

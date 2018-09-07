@@ -1,17 +1,25 @@
 #ifndef TESTKEYHANDLER_H
 #define TESTKEYHANDLER_H
 
-#include <QObject>
+#include <QtTest/QtTest>
 
-class TestKeyHandler : public QObject
+#include "suite.h"
+#include "master/peripheral/keyboard/xkeyhandler.h"
+
+class TestKeyHandler: public TestSuite
 {
     Q_OBJECT
+
 public:
-    explicit TestKeyHandler(QObject *parent = nullptr);
+    using TestSuite::TestSuite;
 
-signals:
+private slots:
+    void initTestCase();
+    void testConstructor();
+    void cleanupTestCase();
 
-public slots:
+private:
+    XKeyHandler *mKeyHandler;
 };
 
 #endif // TESTKEYHANDLER_H

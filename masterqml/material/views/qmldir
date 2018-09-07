@@ -1,0 +1,6 @@
+module material.views
+
+# Views
+CameraView 1.0 CameraView.qml
+DiagnosticView 1.0 DiagnosticView.qml
+SettingsView 1.0 SettingsView.qml
