@@ -1,3 +1,10 @@
 module material.styles
 
 # styles
+ButtonStyle 1.0 ButtonStyle.qml
+CheckBoxStyle 1.0 CheckBoxStyle.qml
+LabelStyle 1.0 LabelStyle.qml
+ProgressBarStyle 1.0 ProgressBarStyle.qml
+RadioButtonStyle 1.0 RadioButtonStyle.qml
+SliderStyle 1.0 SliderStyle.qml
+SwitchStyle 1.0 SwitchStyle.qml
