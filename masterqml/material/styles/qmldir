@@ -1,9 +1,11 @@
 module material.styles
 
 # styles
+ApplicationWindowStyle 1.0 ApplicationWindowStyle.qml
 ButtonStyle 1.0 ButtonStyle.qml
 CheckBoxStyle 1.0 CheckBoxStyle.qml
 LabelStyle 1.0 LabelStyle.qml
+MenuBarStyle 1.0 MenuBarStyle.qml
 ProgressBarStyle 1.0 ProgressBarStyle.qml
 RadioButtonStyle 1.0 RadioButtonStyle.qml
 SliderStyle 1.0 SliderStyle.qml

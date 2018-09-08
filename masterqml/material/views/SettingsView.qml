@@ -1,9 +1,24 @@
-import QtQuick 2.0
+import QtQuick 2.11
+import QtQml 2.11
+import material.controls 1.0
 
-Component {
+Item {
 
-    Text {
-        text:"setting view"
+    Column {
+        spacing: 8
+
+        Button {
+            text: "Button"
+        }
+
+        CheckBox {
+            text: "CheckBox"
+        }
+
+        RadioButton {
+            text: "RadioButton"
+        }
+
     }
 
 }

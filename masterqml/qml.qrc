@@ -32,5 +32,12 @@
         <file>material/styles/TextAreaStyle.qml</file>
         <file>material/styles/TextFieldStyle.qml</file>
         <file>material/styles/BusyIndicatorStyle.qml</file>
+        <file>material/controls/ApplicationWindow.qml</file>
+        <file>material/controls/StackView.qml</file>
+        <file>material/styles/ApplicationWindowStyle.qml</file>
+        <file>material/styles/MenuBarStyle.qml</file>
+        <file>material/controls/MenuBar.qml</file>
+        <file>material/controls/Menu.qml</file>
+        <file>material/styles/MenuStyle.qml</file>
     </qresource>
 </RCC>

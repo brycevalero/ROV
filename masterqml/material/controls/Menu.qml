@@ -1,8 +1,8 @@
-import QtQuick 2.0
+import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
 import material.styles 1.0 as Material
 
-Controls.RadioButton {
+Controls.Menu {
     id: control
-    style: Material.RadioButtonStyle {}
+    style: Material.MenuStyle {}
 }
