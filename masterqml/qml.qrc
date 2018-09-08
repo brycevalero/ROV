@@ -39,5 +39,6 @@
         <file>material/controls/MenuBar.qml</file>
         <file>material/controls/Menu.qml</file>
         <file>material/styles/MenuStyle.qml</file>
+        <file>material/core/Theme.qml</file>
     </qresource>
 </RCC>

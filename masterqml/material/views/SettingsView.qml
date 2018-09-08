@@ -19,6 +19,18 @@ Item {
             text: "RadioButton"
         }
 
+        ProgressBar {
+            value: 0.25
+        }
+
+        ProgressBar {
+            value: 0.5
+        }
+
+        ProgressBar {
+            value: 0.75
+        }
+
     }
 
 }

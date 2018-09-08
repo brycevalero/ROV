@@ -32,7 +32,6 @@
 /.clang-format
 Makefile*
 Thumbs.db
-core
 moc_*.cpp
 moc_*.h
 qrc_*.cpp

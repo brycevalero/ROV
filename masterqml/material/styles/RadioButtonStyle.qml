@@ -1,7 +1,10 @@
 import QtQuick 2.0
 import QtQuick.Controls.Styles 1.4
+import material.core 1.0
 
 RadioButtonStyle {
+    id: style
+
     indicator: Rectangle {
         implicitWidth: 26
         implicitHeight: 26
@@ -9,7 +12,7 @@ RadioButtonStyle {
         y: parent.height / 2 - height / 2
         radius: 13
         color: "transparent"
-        border.color: control.pressed ? "#17a81a" : "#21be2b"
+        border.color: control.pressed ? Theme.primaryActive : Theme.primary
 
         Rectangle {
             width: 14
@@ -17,7 +20,7 @@ RadioButtonStyle {
             x: 6
             y: 6
             radius: 7
-            color: control.pressed ? "#17a81a" : "#21be2b"
+            color: control.pressed ? Theme.primaryActive : Theme.primary
             visible: control.checked
         }
     }
@@ -26,7 +29,7 @@ RadioButtonStyle {
         text: control.text
         //font: control.font
         opacity: control.enabled ? 1.0 : 0.3
-        color: control.down ? "#17a81a" : "#21be2b"
+        color: control.pressed ? Theme.primaryActive : Theme.primary
         verticalAlignment: Text.AlignVCenter
         //leftPadding: control.indicator.width + control.spacing
     }
