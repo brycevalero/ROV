@@ -21,24 +21,15 @@
         <file>material/controls/TextField.qml</file>
         <file>material/controls/BusyIndicator.qml</file>
         <file>material/controls/GroupBox.qml</file>
-        <file>material/styles/ButtonStyle.qml</file>
-        <file>material/styles/CheckBoxStyle.qml</file>
-        <file>material/styles/GroupBoxStyle.qml</file>
-        <file>material/styles/LabelStyle.qml</file>
-        <file>material/styles/ProgressBarStyle.qml</file>
-        <file>material/styles/RadioButtonStyle.qml</file>
-        <file>material/styles/SliderStyle.qml</file>
-        <file>material/styles/SwitchStyle.qml</file>
-        <file>material/styles/TextAreaStyle.qml</file>
-        <file>material/styles/TextFieldStyle.qml</file>
-        <file>material/styles/BusyIndicatorStyle.qml</file>
         <file>material/controls/ApplicationWindow.qml</file>
         <file>material/controls/StackView.qml</file>
-        <file>material/styles/ApplicationWindowStyle.qml</file>
-        <file>material/styles/MenuBarStyle.qml</file>
         <file>material/controls/MenuBar.qml</file>
         <file>material/controls/Menu.qml</file>
-        <file>material/styles/MenuStyle.qml</file>
         <file>material/core/Theme.qml</file>
+        <file>material/controls/CheckDelegate.qml</file>
+        <file>material/controls/qmldir</file>
+        <file>material/controls/ComboBox.qml</file>
+        <file>material/controls/DelayButton.qml</file>
+        <file>material/controls/Dial.qml</file>
     </qresource>
 </RCC>

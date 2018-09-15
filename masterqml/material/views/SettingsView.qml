@@ -7,16 +7,27 @@ Item {
     Column {
         spacing: 8
 
-        Button {
-            text: "Button"
-        }
+        GroupBox {
+            title: "GroupBox"
 
-        CheckBox {
-            text: "CheckBox"
-        }
+            Column {
+                spacing: 8
+                Button {
+                    text: "Button"
+                }
 
-        RadioButton {
-            text: "RadioButton"
+                CheckBox {
+                    text: "CheckBox"
+                }
+
+                RadioButton {
+                    text: "RadioButton"
+                }
+
+                Switch{
+                    text: "Switch"
+                }
+            }
         }
 
         ProgressBar {
@@ -29,6 +40,18 @@ Item {
 
         ProgressBar {
             value: 0.75
+        }
+
+        Slider {
+
+        }
+
+        TextArea {
+
+        }
+
+        TextField {
+
         }
 
     }
