@@ -4,7 +4,6 @@ import material.core 1.0
 
 Controls.ComboBox {
     id: control
-    model: ["First", "Second", "Third"]
 
     delegate: Controls.ItemDelegate {
         width: control.width

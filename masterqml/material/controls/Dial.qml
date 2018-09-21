@@ -4,6 +4,7 @@ import material.core 1.0
 
 Controls.Dial {
     id: control
+
     background: Rectangle {
         x: control.width / 2 - width / 2
         y: control.height / 2 - height / 2

@@ -31,5 +31,12 @@
         <file>material/controls/ComboBox.qml</file>
         <file>material/controls/DelayButton.qml</file>
         <file>material/controls/Dial.qml</file>
+        <file>material/controls/MenuItem.qml</file>
+        <file>material/controls/PageIndicator.qml</file>
+        <file>material/controls/RadioDelegate.qml</file>
+        <file>material/controls/RangeSlider.qml</file>
+        <file>material/controls/SpinBox.qml</file>
+        <file>material/controls/Pane.qml</file>
+        <file>material/controls/Popup.qml</file>
     </qresource>
 </RCC>

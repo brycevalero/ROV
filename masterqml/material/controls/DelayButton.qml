@@ -4,8 +4,6 @@ import material.core 1.0
 
 Controls.DelayButton {
     id: control
-    checked: true
-    text: qsTr("Delay\nButton")
 
     contentItem: Text {
         text: control.text

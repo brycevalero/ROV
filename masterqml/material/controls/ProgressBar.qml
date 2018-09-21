@@ -5,6 +5,8 @@ import material.core 1.0
 Controls.ProgressBar {
     id: control
 
+    anchors.margins: 2
+
     background: Rectangle {
         implicitWidth: 200
         implicitHeight: 6

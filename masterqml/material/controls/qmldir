@@ -13,9 +13,16 @@ GroupBox 1.0 GroupBox.qml
 Label 1.0 Label.qml
 Menu 1.0 Menu.qml
 MenuBar 1.0 MenuBar.qml
+MenuItem 1.0 MenuItem.qml
+PageIndicator 1.0 PageIndicator.qml
+Pane 1.0 Pane.qml
+Popup 1.0 Popup.qml
 ProgressBar 1.0 ProgressBar.qml
 RadioButton 1.0 RadioButton.qml
+RadioDelegate 1.0 RadioDelegate.qml
+RangeSlider 1.0 RangeSlider.qml
 Slider 1.0 Slider.qml
+SpinBox 1.0 SpinBox.qml
 StackView 1.0 StackView.qml
 Switch 1.0 Switch.qml
 TextArea 1.0 TextArea.qml

@@ -27,6 +27,14 @@ Item {
                 Switch{
                     text: "Switch"
                 }
+
+                DelayButton{
+                    text: "DelayButton"
+                }
+
+                Dial{
+
+                }
             }
         }
 
@@ -52,6 +60,14 @@ Item {
 
         TextField {
 
+        }
+
+        BusyIndicator{
+
+        }
+
+        ComboBox{
+            model: ["First", "Second", "Third"]
         }
 
     }

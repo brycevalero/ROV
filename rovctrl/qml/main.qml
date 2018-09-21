@@ -14,8 +14,18 @@ ApplicationWindow {
     menuBar: MenuBar {
         Menu {
             title: "File"
-            MenuItem { text: "Open..." }
+            MenuItem { text: "Open..."; checkable: true }
             MenuItem { text: "Close" }
+            Action { text: qsTr("Tool Bar"); checkable: true }
+                Action { text: qsTr("Side Bar"); checkable: true; checked: true }
+                Action { text: qsTr("Status Bar"); checkable: true; checked: true }
+
+            Menu {
+               title: qsTr("Advanced")
+               Action { text: qsTr("Tool Bar"); checkable: true }
+                   Action { text: qsTr("Side Bar"); checkable: true; checked: true }
+                   Action { text: qsTr("Status Bar"); checkable: true; checked: true }
+            }
         }
 
         Menu {
