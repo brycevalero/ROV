@@ -25,7 +25,7 @@ Controls.SpinBox {
         x: control.mirrored ? 0 : parent.width - width
         height: parent.height
         implicitWidth: 40
-        implicitHeight: 40
+        implicitHeight: 26
         color: control.up.pressed ? "#e4e4e4" : "#f6f6f6"
         border.color: enabled ? "#21be2b" : "#bdbebf"
 
@@ -44,7 +44,7 @@ Controls.SpinBox {
         x: control.mirrored ? parent.width - width : 0
         height: parent.height
         implicitWidth: 40
-        implicitHeight: 40
+        implicitHeight: 26
         color: control.down.pressed ? "#e4e4e4" : "#f6f6f6"
         border.color: enabled ? "#21be2b" : "#bdbebf"
 

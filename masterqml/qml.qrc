@@ -38,5 +38,7 @@
         <file>material/controls/SpinBox.qml</file>
         <file>material/controls/Pane.qml</file>
         <file>material/controls/Popup.qml</file>
+        <file>material/components/qmldir</file>
+        <file>material/controls/TabButton.qml</file>
     </qresource>
 </RCC>

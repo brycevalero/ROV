@@ -9,31 +9,29 @@ XKeyMap::XKeyMap()
 }
 
 /*-----------------------------------------------------------------+
-| Map a particular keycode to an action
+| When a key is pressed, this will filter the key press events
+| and then emit a signal.  It will ignore any auto repeat key press
+| events.
 +------------------------------------------------------------------+
 | Parameters:
-|   keycode (int): qt enum of key
-|   state (bool): on (pressed) or off (released)
+|   obj (QObject): we need the QObject passed in so we can return it
+|   event (QEvent): used to filter on
 | Return:
-|   void
+|   (bool): whether we filtered the keypress or not
 +-----------------------------------------------------------------*/
-void XKeyMap::sendKey(int keycode, bool state)
+bool XKeyMap::eventFilter(QObject* obj, QEvent* event)
 {
-    qDebug() << "YEAH" << keycode;
+    QKeyEvent* key = static_cast<QKeyEvent*>(event);
 
-    switch( keycode )
-    {
-        case Qt::Key_Up:
-            qDebug() << "UP";
-            break ;
-        case Qt::Key_Down :
-            qDebug() << "DOWN";
-            break ;
-        case Qt::Key_Left :
-            qDebug() << "LEFT";
-            break ;
-        case Qt::Key_Right :
-            qDebug() << "RIGHT";
-            break ;
+    if (event->type()==QEvent::KeyPress) {
+        if ( (key->key()==Qt::Key_Enter) || (key->key()==Qt::Key_Return) ) {
+            qDebug() << "-----ENTER-------";
+        } else {
+            return QObject::eventFilter(obj, event);
+        }
+        return true;
+    } else {
+        return QObject::eventFilter(obj, event);
     }
+    return false;
 }

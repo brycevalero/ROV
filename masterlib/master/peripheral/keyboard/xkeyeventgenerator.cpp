@@ -21,6 +21,8 @@ void XKeyEventGenerator::generateEvent(int keycode, bool state)
 {
     QKeyEvent *keyEvent;
 
+    qDebug() << "GENERATE: " << keycode << state;
+
     if(state)
     {
         keyEvent = new QKeyEvent(QEvent::KeyPress,keycode,Qt::NoModifier);

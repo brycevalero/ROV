@@ -75,7 +75,7 @@ XKeyHandler::XKeyHandler()
     }
 
     mByteArrayLen = mKeysByteArray.size();
-    qDebug() << "BYTE ARRAY LEN" << mByteArrayLen;
+    qDebug() << "BYTE ARRAY LEN: " << mByteArrayLen;
 }
 
 /*-----------------------------------------------------------------+
@@ -123,12 +123,14 @@ void XKeyHandler::setKeys(int key, QByteArray bytes)
         bool state = extractKey(key, bytes);
         //then set key state of our local byte array
         setKey(key, state);
+
+        qDebug() << "SET KEYs:" << mKeys.key(key) << "VALUE:" << key << "STATE: " << state;
+
         //notify everyone we got new key value
         emit keySet(mKeys.key(key), state);
-        qDebug() << "KEYS:" << key << state;
     }
 
-    syncKeys(bytes);
+    //syncKeys(bytes);
 }
 
 /*-----------------------------------------------------------------+
@@ -230,7 +232,7 @@ void XKeyHandler::syncKeys(QByteArray bytes)
 
     if(tmp != mKeysByteArray)
     {
-        qDebug() << "Mismatch of key byte arrays, lets sync up!";
+        //qDebug() << "Mismatch of key byte arrays, lets sync up!";
 
         for(int j=0;j<mKeysByteArray.size();j++)
         {
@@ -249,7 +251,7 @@ void XKeyHandler::syncKeys(QByteArray bytes)
                     {
                         //notify everyone we got new key value
                         emit keySet(mKeys.key(j*8+k), newVal);
-                        qDebug() << j*8+k << newVal;
+                        //qDebug() << j*8+k << newVal;
                     }
                 }
             }

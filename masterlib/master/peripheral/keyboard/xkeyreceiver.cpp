@@ -37,6 +37,6 @@ void XKeyReceiver::receiveData(QByteArray ba)
     {
         QByteArray payload = ba;
     }
-    qDebug() << ba;
+    qDebug() << "RECEIVED_DATA: " << ba.toHex();
     emit dataReceived(ba);
 }

@@ -22,7 +22,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        master/masterlib.cpp \
+    master/masterlib.cpp \
     master/socket/xhostaddress.cpp \
     master/socket/xudpsocket.cpp \
     master/socket/xtcpserver.cpp \
@@ -39,8 +39,8 @@ SOURCES += \
     master/config/ini/xkeysettings.cpp
 
 HEADERS += \
-        master/masterlib.h \
-        master/masterlib_global.h \
+    master/masterlib.h \
+    master/masterlib_global.h \
     master/socket/xhostaddress.h \
     master/socket/xudpsocket.h \
     master/socket/xtcpserver.h \

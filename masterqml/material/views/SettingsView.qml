@@ -1,75 +1,107 @@
 import QtQuick 2.11
 import QtQml 2.11
+import material.components 1.0
 import material.controls 1.0
 
 Item {
 
-    Column {
+    Row{
         spacing: 8
 
-        GroupBox {
-            title: "GroupBox"
+        Column {
+            spacing: 8
 
-            Column {
-                spacing: 8
-                Button {
-                    text: "Button"
-                }
+            GroupBox {
+                title: "GroupBox"
 
-                CheckBox {
-                    text: "CheckBox"
-                }
+                Column {
+                    spacing: 8
+                    Button {
+                        text: "Button"
+                    }
 
-                RadioButton {
-                    text: "RadioButton"
-                }
+                    CheckBox {
+                        text: "CheckBox"
+                    }
 
-                Switch{
-                    text: "Switch"
-                }
+                    RadioButton {
+                        text: "RadioButton"
+                    }
 
-                DelayButton{
-                    text: "DelayButton"
-                }
+                    Switch{
+                        text: "Switch"
+                    }
 
-                Dial{
+                    DelayButton{
+                        text: "DelayButton"
+                    }
 
+                    Dial{
+
+                    }
                 }
             }
         }
 
-        ProgressBar {
-            value: 0.25
+        Column {
+            spacing: 8
+
+            GroupBox {
+                title: "GroupBox"
+
+                Column {
+                    spacing: 8
+
+                    ProgressBar {
+                        value: 0.25
+                    }
+
+                    ProgressBar {
+                        value: 0.5
+                    }
+
+                    ProgressBar {
+                        value: 0.75
+                    }
+
+                    Slider {
+
+                    }
+
+                    TextArea {
+
+                    }
+
+                    TextField {
+
+                    }
+
+                    BusyIndicator{
+
+                    }
+
+                    ComboBox{
+                        model: ["First", "Second", "Third"]
+                    }
+                }
+            }
+
         }
 
-        ProgressBar {
-            value: 0.5
+        Column {
+            spacing: 8
+
+            GroupBox {
+                title: "GroupBox"
+
+                Column {
+                    spacing: 8
+
+                    SpinBox{
+
+                    }
+                }
+            }
         }
-
-        ProgressBar {
-            value: 0.75
-        }
-
-        Slider {
-
-        }
-
-        TextArea {
-
-        }
-
-        TextField {
-
-        }
-
-        BusyIndicator{
-
-        }
-
-        ComboBox{
-            model: ["First", "Second", "Third"]
-        }
-
     }
-
 }

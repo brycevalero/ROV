@@ -43,9 +43,9 @@ QByteArray XKeyProtocol::frameData(int key, int payloadLen, QByteArray payload)
 
     QByteArray data;
     data.append(XKey::HEX_SOH);
-    data.append(0x4B); //letter K
+    data.append(0x4B); //KEY (letter k)
     data.append(key);
-    data.append(0x4C); //letter L
+    data.append(0x4C); //Length (letter L)
     data.append(payloadLen);
     data.append(XKey::HEX_STX);
     data.append(payload);
@@ -67,6 +67,9 @@ QByteArray XKeyProtocol::frameData(int key, int payloadLen, QByteArray payload)
 void XKeyProtocol::extractData(QByteArray data)
 {
     int key = NULL;
+    int len = NULL;
+    quint16 crc = NULL;
+    QByteArray payload = NULL;
 
     if(data.startsWith(XKey::HEX_SOH)
             && data.contains(0x4B)
@@ -74,8 +77,15 @@ void XKeyProtocol::extractData(QByteArray data)
             && data.endsWith(XKey::HEX_ETX))
     {
         key = data.at(2);
-        data = data.mid(4,4);
+        len = data.at(4);
 
-        emit dataExtracted(key, data);
+        //position, len: -1 is last in array
+        payload = data.mid(6,len);
+        crc = calculateCRC(payload);
+
+        qDebug() << "EXTRACTED DATA: " << payload.toHex();
+
+        //TODO: compare crc with crc of incoming data before emitting signal
+        emit dataExtracted(key, payload);
     }
 }
