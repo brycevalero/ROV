@@ -3,10 +3,12 @@
 
 #include <QDebug>
 #include <QDir>
+#include <QKeySequence>
 #include <QObject>
 #include <QSettings>
 
 #include "master/masterlib_global.h"
+#include "master/controls/xnavigation.h"
 
 class MASTERLIBSHARED_EXPORT XKeySettings : public QObject
 {
@@ -15,6 +17,8 @@ public:
     XKeySettings();
 
 signals:
+    void settingsLoaded(QSettings *settings);
+    void settingsSaved(QSettings *settings);
 
 public slots:
     void loadSettings();
@@ -22,6 +26,7 @@ public slots:
 
 private:
     QString mKeySettingsFile;
+    QSettings *mSettings;
 
 };
 

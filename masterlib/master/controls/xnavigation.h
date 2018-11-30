@@ -14,6 +14,7 @@ public:
     XNavigation();
 
 public slots:
+    void navEvent(QString command, bool active);
     void navFoward();
     void navReverse();
     void navRight();

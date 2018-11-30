@@ -6,8 +6,7 @@
 XKeySettings::XKeySettings()
 {
     mKeySettingsFile = QDir::currentPath() + "/keys.ini";
-
-    qDebug() << mKeySettingsFile;
+    mSettings = new QSettings(mKeySettingsFile, QSettings::IniFormat);
     saveSettings();
 }
 
@@ -19,8 +18,13 @@ XKeySettings::XKeySettings()
 +-----------------------------------------------------------------*/
 void XKeySettings::loadSettings()
 {
-    QSettings settings(mKeySettingsFile, QSettings::IniFormat);
+    QFileInfo check_file(mKeySettingsFile);
 
+    // check if file exists and if yes: Is it really a file and no directory?
+    if (check_file.exists() && check_file.isFile()) {
+
+        emit settingsLoaded(mSettings);
+    }
 }
 
 /*-----------------------------------------------------------------+
@@ -30,12 +34,16 @@ void XKeySettings::loadSettings()
 |   void
 +-----------------------------------------------------------------*/
 void XKeySettings::saveSettings()
-{
-    QSettings settings(mKeySettingsFile, QSettings::IniFormat);
-    settings.beginGroup("Navigation");
-    settings.setValue("up", "llll");
-    settings.setValue("down", "lsdkf");
-    settings.setValue("left", "lsdkf");
-    settings.setValue("right", "lsdkf");
-    settings.endGroup();
+{ 
+    mSettings->beginGroup("Navigation");
+    mSettings->setValue("enter", QKeySequence(Qt::Key_Return));
+    mSettings->setValue("forward", QKeySequence(Qt::Key_W));
+    mSettings->setValue("reverse", QKeySequence(Qt::Key_S));
+    mSettings->setValue("left", QKeySequence(Qt::Key_A));
+    mSettings->setValue("right", QKeySequence(Qt::Key_D));
+    mSettings->setValue("surface", QKeySequence(Qt::Key_Z));
+    mSettings->setValue("dive", QKeySequence(Qt::Key_X));
+    mSettings->endGroup();
+
+    emit settingsSaved(mSettings);
 }
