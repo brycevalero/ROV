@@ -40,5 +40,6 @@
         <file>material/controls/Popup.qml</file>
         <file>material/components/qmldir</file>
         <file>material/controls/TabButton.qml</file>
+        <file>material/core/qmldir</file>
     </qresource>
 </RCC>

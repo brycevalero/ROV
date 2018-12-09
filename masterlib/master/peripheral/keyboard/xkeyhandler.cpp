@@ -130,7 +130,7 @@ void XKeyHandler::setKeys(int key, QByteArray bytes)
         emit keySet(mKeys.key(key), state);
     }
 
-    //syncKeys(bytes);
+    syncKeys(bytes);
 }
 
 /*-----------------------------------------------------------------+
@@ -232,7 +232,7 @@ void XKeyHandler::syncKeys(QByteArray bytes)
 
     if(tmp != mKeysByteArray)
     {
-        //qDebug() << "Mismatch of key byte arrays, lets sync up!";
+        qDebug() << "Mismatch of key byte arrays, lets sync up!";
 
         for(int j=0;j<mKeysByteArray.size();j++)
         {

@@ -68,7 +68,8 @@ void XKeyProtocol::extractData(QByteArray data)
 {
     int key = NULL;
     int len = NULL;
-    quint16 crc = NULL;
+    QByteArray crcBytes = NULL;
+    QByteArray ctrlBytes = NULL;
     QByteArray payload = NULL;
 
     if(data.startsWith(XKey::HEX_SOH)
@@ -79,13 +80,14 @@ void XKeyProtocol::extractData(QByteArray data)
         key = data.at(2);
         len = data.at(4);
 
-        //position, len: -1 is last in array
         payload = data.mid(6,len);
-        crc = calculateCRC(payload);
+        crcBytes = data.mid(6 + payload.length(), 1);
+        ctrlBytes.append(calculateCRC(payload));
 
-        qDebug() << "EXTRACTED DATA: " << payload.toHex();
+        qDebug() << "EXTRACTED DATA: " << payload.toHex() << "CRC: " << crcBytes.toHex() << ctrlBytes.toHex();
 
-        //TODO: compare crc with crc of incoming data before emitting signal
-        emit dataExtracted(key, payload);
+        if(crcBytes == ctrlBytes){
+            emit dataExtracted(key, payload);
+        }
     }
 }
