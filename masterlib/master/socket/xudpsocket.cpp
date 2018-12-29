@@ -1,7 +1,12 @@
 /*-----------------------------------------------------------------+
 | Purpose:
-|   A UDP socket is used for connectionless will read from any client that sends datagrams on the
-|   right port.  In order to write data
+|   A UDP socket is connectionless, meaning it will accept any data
+|   from any address/port (as long as it was sent to this sockets
+|   address and port), and will send data to any address/port.
+|   The connection does not have to be set up prior to sending or
+|   receiving datagrams. This class goes one step further, adding
+|   a list to register/deregister clients that will recieve sent
+|   datagrams.
 | Author:
 |   Bryce Valero
 +-----------------------------------------------------------------*/
@@ -43,7 +48,20 @@ void XUdpSocket::initSocket(XHostAddress *address)
 +-----------------------------------------------------------------*/
 void XUdpSocket::registerClient(XHostAddress *address)
 {
-    mHostAddresses.append(address);
+    mClientAddresses.append(address);
+}
+
+/*-----------------------------------------------------------------+
+| Deregisters an address/port from sending datagrams to
++------------------------------------------------------------------+
+| Parameters:
+|   address (XHostAddress): an ip and port data type
+| Return:
+|   void
++-----------------------------------------------------------------*/
+void XUdpSocket::deregisterClient(XHostAddress *address)
+{
+    mClientAddresses.removeAll(address);
 }
 
 /*-----------------------------------------------------------------+
@@ -58,9 +76,9 @@ bool XUdpSocket::writeData(QByteArray data)
 {
     bool success=true;
 
-    for(int i=0; i<mHostAddresses.size(); i++)
+    for(int i=0; i<mClientAddresses.size(); i++)
     {
-        if(!this->writeData(data, mHostAddresses.at(i)))
+        if(!this->writeData(data, mClientAddresses.at(i)))
         {
             success=false;
         }

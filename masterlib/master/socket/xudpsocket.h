@@ -16,6 +16,7 @@ public:
     explicit XUdpSocket(QObject *parent = 0);
     void initSocket(XHostAddress *address);
     void registerClient(XHostAddress *address);
+    void deregisterClient(XHostAddress *address);
 
 signals:
     void gotDatagrams(QByteArray datagram);
@@ -28,7 +29,7 @@ public slots:
 private:
     QMutex mMutex;
     QUdpSocket *mSocket;
-    QList<XHostAddress*> mHostAddresses;
+    QList<XHostAddress*> mClientAddresses;
 };
 
 #endif // XUDPSOCKET_H
