@@ -1,3 +1,10 @@
+/*-----------------------------------------------------------------+
+| Purpose:
+|   A UDP socket is used for connectionless will read from any client that sends datagrams on the
+|   right port.  In order to write data
+| Author:
+|   Bryce Valero
++-----------------------------------------------------------------*/
 #include "Master/Socket/xudpsocket.h"
 
 /*-----------------------------------------------------------------+
@@ -13,7 +20,7 @@ XUdpSocket::XUdpSocket(QObject *parent):
 }
 
 /*-----------------------------------------------------------------+
-| Bind to a socket at specific address/port
+| Bind to a specific address/port to listen on
 +------------------------------------------------------------------+
 | Parameters:
 |   address (XHostAddress): address/port paring
@@ -27,7 +34,43 @@ void XUdpSocket::initSocket(XHostAddress *address)
 }
 
 /*-----------------------------------------------------------------+
-| Write data to socket
+| Registers an address/port to send datagrams to
++------------------------------------------------------------------+
+| Parameters:
+|   address (XHostAddress): an ip and port data type
+| Return:
+|   void
++-----------------------------------------------------------------*/
+void XUdpSocket::registerClient(XHostAddress *address)
+{
+    mHostAddresses.append(address);
+}
+
+/*-----------------------------------------------------------------+
+| Write data to all registered addresses/ports
++------------------------------------------------------------------+
+| Parameters:
+|   data (QByteArray): data to send
+| Return:
+|   success (bool): whether it wrote data out to ALL sockets
++-----------------------------------------------------------------*/
+bool XUdpSocket::writeData(QByteArray data)
+{
+    bool success=true;
+
+    for(int i=0; i<mHostAddresses.size(); i++)
+    {
+        if(!this->writeData(data, mHostAddresses.at(i)))
+        {
+            success=false;
+        }
+    }
+
+    return success;
+}
+
+/*-----------------------------------------------------------------+
+| Write data to a specific address/port
 +------------------------------------------------------------------+
 | Parameters:
 |   data (QByteArray): data to send
@@ -52,7 +95,8 @@ bool XUdpSocket::writeData(QByteArray data, XHostAddress *address)
 }
 
 /*-----------------------------------------------------------------+
-| Read in the data and emit signal with byte array data
+| Read in the data from any client that sends data to this UDP
+| socket and emit signal with datagrams
 +-----------------------------------------------------------------*/
 void XUdpSocket::readPendingDatagrams()
 {

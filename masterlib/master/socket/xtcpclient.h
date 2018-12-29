@@ -19,6 +19,7 @@ signals:
 
 public slots:
     bool connectHost(QHostAddress address, quint16 port);
+    bool readData();
     bool writeData(QByteArray data);
 
 private:

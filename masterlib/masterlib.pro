@@ -27,12 +27,10 @@ SOURCES += \
     master/socket/xudpsocket.cpp \
     master/socket/xtcpserver.cpp \
     master/socket/xtcpclient.cpp \
-    master/peripheral/keyboard/xkeyforwarder.cpp \
     master/peripheral/gamepad/xgamepad.cpp \
     master/peripheral/keyboard/xkeyhandler.cpp \
     master/peripheral/keyboard/xkeyeventfilter.cpp \
     master/peripheral/keyboard/xkeyprotocol.cpp \
-    master/peripheral/keyboard/xkeyreceiver.cpp \
     master/controls/xnavigation.cpp \
     master/peripheral/keyboard/xkeyeventgenerator.cpp \
     master/controls/xkeymap.cpp \
@@ -45,13 +43,11 @@ HEADERS += \
     master/socket/xudpsocket.h \
     master/socket/xtcpserver.h \
     master/socket/xtcpclient.h \
-    master/peripheral/keyboard/xkeyforwarder.h \
     master/peripheral/gamepad/xgamepad.h \
     master/peripheral/keyboard/xkey.h \
     master/peripheral/keyboard/xkeyhandler.h \
     master/peripheral/keyboard/xkeyeventfilter.h \
     master/peripheral/keyboard/xkeyprotocol.h \
-    master/peripheral/keyboard/xkeyreceiver.h \
     master/controls/xnavigation.h \
     master/peripheral/keyboard/xkeyeventgenerator.h \
     master/controls/xkeymap.h \

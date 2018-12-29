@@ -28,6 +28,12 @@ bool XTcpClient::connectHost(QHostAddress address, quint16 port)
     return mSocket->waitForConnected();
 }
 
+bool XTcpClient::readData()
+{
+    //TODO: implement
+    return true;
+}
+
 /*-----------------------------------------------------------------+
 | Write data to the socket
 +------------------------------------------------------------------+
