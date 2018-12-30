@@ -50,15 +50,15 @@ QByteArray XKeyProtocol::frameData(int key, int payloadLen, QByteArray payload)
     quint16 crc = calculateCRC(payload);
 
     QByteArray data;
-    data.append(XKey::HEX_SOH);
+    data.append(Control::HEX_SOH);
     data.append(0x4B); //KEY (letter k)
     data.append(key);
     data.append(0x4C); //Length (letter L)
     data.append(payloadLen);
-    data.append(XKey::HEX_STX);
+    data.append(Control::HEX_STX);
     data.append(payload);
     data.append(crc);
-    data.append(XKey::HEX_ETX);
+    data.append(Control::HEX_ETX);
 
     emit dataFramed(data);
     return data;
@@ -80,10 +80,10 @@ void XKeyProtocol::extractData(QByteArray data)
     QByteArray ctrlBytes = NULL;
     QByteArray payload = NULL;
 
-    if(data.startsWith(XKey::HEX_SOH)
+    if(data.startsWith(Control::HEX_SOH)
             && data.contains(0x4B)
-            && data.contains(XKey::HEX_STX)
-            && data.endsWith(XKey::HEX_ETX))
+            && data.contains(Control::HEX_STX)
+            && data.endsWith(Control::HEX_ETX))
     {
         key = data.at(2);
         len = data.at(4);

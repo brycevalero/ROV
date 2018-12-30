@@ -6,9 +6,6 @@
 #include <QHash>
 
 #include "master/masterlib_global.h"
-#include "master/peripheral/keyboard/xkey.h"
-
-using namespace XKey;
 
 class MASTERLIBSHARED_EXPORT XKeyHandler : public QObject
 {

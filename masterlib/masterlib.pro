@@ -44,7 +44,6 @@ HEADERS += \
     master/socket/xtcpserver.h \
     master/socket/xtcpclient.h \
     master/peripheral/gamepad/xgamepad.h \
-    master/peripheral/keyboard/xkey.h \
     master/peripheral/keyboard/xkeyhandler.h \
     master/peripheral/keyboard/xkeyeventfilter.h \
     master/peripheral/keyboard/xkeyprotocol.h \
