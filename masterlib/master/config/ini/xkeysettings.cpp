@@ -7,7 +7,8 @@ XKeySettings::XKeySettings()
 {
     mKeySettingsFile = QDir::currentPath() + "/keys.ini";
     mSettings = new QSettings(mKeySettingsFile, QSettings::IniFormat);
-    saveSettings();
+    mKeys = new QHash<int, int>();
+    //saveSettings();
 }
 
 /*-----------------------------------------------------------------+
@@ -25,6 +26,35 @@ void XKeySettings::loadSettings()
 
         emit settingsLoaded(mSettings);
     }
+}
+
+/*-----------------------------------------------------------------+
+| Load navigation from ini file
++------------------------------------------------------------------+
+| Return:
+|   void
++-----------------------------------------------------------------*/
+void XKeySettings::loadNavigation()
+{
+    mSettings->beginGroup("Navigation");
+    int count = 0x00;
+    foreach (const QString &key, mSettings->childKeys()) {
+        QKeySequence seq = QKeySequence(mSettings->value(key).toString());
+        mKeys->insert(seq[0], count);
+
+        qDebug() << "Key Map:" << mSettings->value(key).toString() << seq[0] << ":" << count;
+        count++;
+    }
+
+    if(mKeys->size() > 0) {
+        emit navigationLoaded(mKeys);
+    }
+    mSettings->endGroup();
+}
+
+void XKeySettings::loadGroup(QString group)
+{
+    //TODO: load settings generically by group and emit qmap
 }
 
 /*-----------------------------------------------------------------+

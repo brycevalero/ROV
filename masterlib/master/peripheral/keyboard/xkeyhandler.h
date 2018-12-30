@@ -23,6 +23,7 @@ public:
     XKeyHandler();
 
 public slots:
+    void loadKeys(QHash<int, int> *keys);
     bool getKeyByCode(int keycode);
     void setKeyByCode(int keycode, bool state);
     void setKeys(int key, QByteArray bytes);
@@ -31,7 +32,7 @@ public slots:
     bool getKey(int key);
 
 private:
-    QHash<int,int> mKeys;
+    QHash<int,int> *mKeys;
     QByteArray mKeysByteArray;
     int mByteArrayLen;
 

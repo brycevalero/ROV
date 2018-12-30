@@ -25,6 +25,20 @@ XUdpSocket::XUdpSocket(QObject *parent):
 }
 
 /*-----------------------------------------------------------------+
+| Constructor
++------------------------------------------------------------------+
+| Parameters:
+|   address (XHostAddress): address/port paring
+|   parent (QObject): parent object
++-----------------------------------------------------------------*/
+XUdpSocket::XUdpSocket(XHostAddress *address, QObject *parent):
+    QObject(parent)
+{
+    mSocket = new QUdpSocket(this);
+    this->initSocket(address);
+}
+
+/*-----------------------------------------------------------------+
 | Bind to a specific address/port to listen on
 +------------------------------------------------------------------+
 | Parameters:
@@ -101,12 +115,16 @@ bool XUdpSocket::writeData(QByteArray data, XHostAddress *address)
     QMutexLocker locker(&mMutex);
     bool success = false;
 
-    qint64 bytesSent = mSocket->writeDatagram(data, address->getAddress(), address->getPort());
+    qint64 bytesSent = mSocket->writeDatagram(data,
+                                              address->getAddress(),
+                                              address->getPort());
 
     if(data.size() == bytesSent)
     {
         success = true;
-        qDebug() << "Sending" << data << "to" << address->getAddress() << ":" << address->getPort();
+        qDebug() << "Sending" << data << "to"
+                 << address->getAddress() << ":"
+                 << address->getPort();
     }
 
     return success;

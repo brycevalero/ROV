@@ -23,7 +23,9 @@ int main(int argc, char *argv[])
     XKeyMap *keyMap = new XKeyMap();
     XNavigation *navigation = new XNavigation();
 
-    QObject::connect(keySettings, SIGNAL(settingsSaved(QSettings*)), keyMap, SLOT(setKeyMap(QSettings*)));
+    QObject::connect(keySettings, SIGNAL(settingsLoaded(QSettings*)), keyMap, SLOT(setKeyMap(QSettings*)));
+    QObject::connect(keySettings, SIGNAL(navigationLoaded(QHash<int,int>*)), keyHandler, SLOT(loadKeys(QHash<int,int>*)));
+
     QObject::connect(udpSocket, SIGNAL(gotDatagrams(QByteArray)), keyProtocol, SLOT(extractData(QByteArray)));
     QObject::connect(keyProtocol, SIGNAL(dataExtracted(int, QByteArray)), keyHandler, SLOT(setKeys(int, QByteArray)));
     QObject::connect(keyHandler, SIGNAL(keySet(int,bool)), keyEventGenerator, SLOT(generateEvent(int,bool)));
@@ -34,7 +36,9 @@ int main(int argc, char *argv[])
     //QCoreApplication *app = new QCoreApplication (argc, argv);
     //app.installEventFilter(keyEventFilter);
     app.installEventFilter(keyMap);
-    keySettings->saveSettings();
+    //keySettings->saveSettings();
+    keySettings->loadSettings();
+    keySettings->loadNavigation();
     udpSocket->initSocket(local);
 
     return app.exec();

@@ -17,17 +17,20 @@ public:
     XKeySettings();
 
 signals:
+    void navigationLoaded(QHash<int, int> *nav);
     void settingsLoaded(QSettings *settings);
     void settingsSaved(QSettings *settings);
 
 public slots:
+    void loadNavigation();
     void loadSettings();
     void saveSettings();
+    void loadGroup(QString group);
 
 private:
     QString mKeySettingsFile;
     QSettings *mSettings;
-
+    QHash<int, int> *mKeys;
 };
 
 #endif // XKEYSETTINGS_H

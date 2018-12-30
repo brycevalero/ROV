@@ -1,3 +1,9 @@
+/*-----------------------------------------------------------------+
+| Purpose:
+|   Pairs a QHostAddress and quint16 port into a single object
+| Author:
+|   Bryce Valero
++-----------------------------------------------------------------*/
 #include "xhostaddress.h"
 
 /*-----------------------------------------------------------------+
@@ -38,8 +44,6 @@ QHostAddress XHostAddress::getAddress()
 +------------------------------------------------------------------+
 | Parameters:
 |   address (QHostAddress): an address
-| Return:
-|   (void)
 +-----------------------------------------------------------------*/
 void XHostAddress::setAddress(QHostAddress address)
 {
@@ -62,8 +66,6 @@ quint16 XHostAddress::getPort()
 +------------------------------------------------------------------+
 | Parameters:
 |   port (quint16): a port
-| Return:
-|   (void)
 +-----------------------------------------------------------------*/
 void XHostAddress::setPort(quint16 port)
 {

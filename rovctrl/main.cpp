@@ -6,17 +6,20 @@
 
 #include "master/masterlib.h"
 #include "master/socket/xudpsocket.h"
+#include "master/config/ini/xkeysettings.h"
 #include "master/peripheral/keyboard/xkeyeventfilter.h"
 #include "master/peripheral/keyboard/xkeyhandler.h"
 #include "master/peripheral/keyboard/xkeyprotocol.h"
 
 int main(int argc, char *argv[])
 {
+    XKeySettings *keySettings = new XKeySettings();
     XKeyEventFilter *keyEventFilter = new XKeyEventFilter();
     XKeyHandler *keyHandler = new XKeyHandler();
     XKeyProtocol *keyProtocol = new XKeyProtocol();
     XUdpSocket *udpSocket = new XUdpSocket();
 
+    QObject::connect(keySettings, SIGNAL(navigationLoaded(QHash<int,int>*)), keyHandler, SLOT(loadKeys(QHash<int,int>*)));
     QObject::connect(keyEventFilter, SIGNAL(keyEvent(int,bool)), keyHandler, SLOT(setKeyByCode(int,bool)));
     QObject::connect(keyHandler, SIGNAL(keyChanged(int,int,QByteArray)), keyProtocol, SLOT(frameData(int,int,QByteArray)));
     QObject::connect(keyProtocol, SIGNAL(dataFramed(QByteArray)), udpSocket, SLOT(writeData(QByteArray)));
@@ -35,6 +38,11 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
     app.installEventFilter(keyEventFilter);
+
+    //keySettings->saveSettings();
+    keySettings->loadSettings();
+    keySettings->loadNavigation();
+    keySettings->loadGroup("Navigation");
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

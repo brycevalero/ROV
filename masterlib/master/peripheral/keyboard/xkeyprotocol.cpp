@@ -1,3 +1,11 @@
+/*-----------------------------------------------------------------+
+| Purpose:
+|   Frames or Extracts payload data created with specific protocol as
+|   specified here:
+|     SOH K <Key> L <Length> STX <payload> <crc> ETX
+| Author:
+|   Bryce Valero
++-----------------------------------------------------------------*/
 #include "xkeyprotocol.h"
 
 /*-----------------------------------------------------------------+
@@ -84,7 +92,8 @@ void XKeyProtocol::extractData(QByteArray data)
         crcBytes = data.mid(6 + payload.length(), 1);
         ctrlBytes.append(calculateCRC(payload));
 
-        qDebug() << "EXTRACTED DATA: " << payload.toHex() << "CRC: " << crcBytes.toHex() << ctrlBytes.toHex();
+        qDebug() << "EXTRACTED DATA: " << payload.toHex() << "CRC: "
+                 << crcBytes.toHex() << ctrlBytes.toHex();
 
         if(crcBytes == ctrlBytes){
             emit dataExtracted(key, payload);

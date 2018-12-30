@@ -14,6 +14,7 @@ class MASTERLIBSHARED_EXPORT XUdpSocket: public QObject
     Q_OBJECT
 public:
     explicit XUdpSocket(QObject *parent = 0);
+    explicit XUdpSocket(XHostAddress *address, QObject *parent = 0);
     void initSocket(XHostAddress *address);
     void registerClient(XHostAddress *address);
     void deregisterClient(XHostAddress *address);
