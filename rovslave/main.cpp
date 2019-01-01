@@ -37,8 +37,9 @@ int main(int argc, char *argv[])
     //app.installEventFilter(keyEventFilter);
     app.installEventFilter(keyMap);
     //keySettings->saveSettings();
-    keySettings->loadSettings();
+    keySettings->loadSettings(QDir::currentPath() + "/keys.ini");
     keySettings->loadNavigation();
+    keySettings->loadGroup("Navigation");
     udpSocket->initSocket(local);
 
     return app.exec();

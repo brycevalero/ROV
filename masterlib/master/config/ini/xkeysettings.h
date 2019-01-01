@@ -23,12 +23,12 @@ signals:
 
 public slots:
     void loadNavigation();
-    void loadSettings();
+    void loadSettings(QString file);
     void saveSettings();
     void loadGroup(QString group);
 
 private:
-    QString mKeySettingsFile;
+    QString mSettingsFile;
     QSettings *mSettings;
     QHash<int, int> *mKeys;
 };

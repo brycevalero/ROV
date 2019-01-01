@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     app.installEventFilter(keyEventFilter);
 
     //keySettings->saveSettings();
-    keySettings->loadSettings();
+    keySettings->loadSettings(QDir::currentPath() + "/keys.ini");
     keySettings->loadNavigation();
     keySettings->loadGroup("Navigation");
 

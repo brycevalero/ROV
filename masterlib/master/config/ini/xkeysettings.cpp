@@ -5,25 +5,27 @@
 +-----------------------------------------------------------------*/
 XKeySettings::XKeySettings()
 {
-    mKeySettingsFile = QDir::currentPath() + "/keys.ini";
-    mSettings = new QSettings(mKeySettingsFile, QSettings::IniFormat);
+    mSettingsFile = "";
+    mSettings = NULL;
     mKeys = new QHash<int, int>();
-    //saveSettings();
 }
 
 /*-----------------------------------------------------------------+
 | Load settings from ini file
 +------------------------------------------------------------------+
+| Parameters:
+|   file (QString): path to ini file
 | Return:
 |   void
 +-----------------------------------------------------------------*/
-void XKeySettings::loadSettings()
+void XKeySettings::loadSettings(QString file)
 {
-    QFileInfo check_file(mKeySettingsFile);
+    mSettingsFile = file;
+    QFileInfo check_file(mSettingsFile);
 
     // check if file exists and if yes: Is it really a file and no directory?
     if (check_file.exists() && check_file.isFile()) {
-
+        mSettings = new QSettings(mSettingsFile, QSettings::IniFormat);
         emit settingsLoaded(mSettings);
     }
 }
@@ -55,6 +57,18 @@ void XKeySettings::loadNavigation()
 void XKeySettings::loadGroup(QString group)
 {
     //TODO: load settings generically by group and emit qmap
+/*
+    if(mSettings->childGroups().contains(group)){
+        mSettings->beginGroup(group);
+        QMap group = new QMap();
+        int count = 0x00;
+        foreach (const QString &key, mSettings->childKeys()) {
+            QKeySequence seq = QKeySequence(mSettings->value(key).toString());
+            qDebug() << "Key Map:" << mSettings->value(key).toString() << seq[0] << ":" << count;
+            count++;
+        }
+        mSettings->endGroup();
+    }*/
 }
 
 /*-----------------------------------------------------------------+
