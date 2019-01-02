@@ -15,17 +15,21 @@ class MASTERLIBSHARED_EXPORT XKeySettings : public QObject
     Q_OBJECT
 public:
     XKeySettings();
+    XKeySettings(QString file);
+    ~XKeySettings();
 
 signals:
     void navigationLoaded(QHash<int, int> *nav);
     void settingsLoaded(QSettings *settings);
     void settingsSaved(QSettings *settings);
+    void groupLoaded(QString group, QMap<QString, QVariant>);
 
 public slots:
-    void loadNavigation();
-    void loadSettings(QString file);
+    QSettings* loadSettings(QString file);
     void saveSettings();
-    void loadGroup(QString group);
+    void loadNavigation();
+    QMap<QString, QVariant> loadGroup(QString group);
+    void saveGroup(QString group, QMap<QString, QVariant>);
 
 private:
     QString mSettingsFile;
