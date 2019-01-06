@@ -46,6 +46,12 @@ void XKeyHandler::setKeyByCode(int keycode, bool state)
     //return success;
 }
 
+/*-----------------------------------------------------------------+
+| Loads keys and creates a bytearray to hold individual key state
++------------------------------------------------------------------+
+| Parameters:
+|   keys (QHash<int, int>):
++-----------------------------------------------------------------*/
 void XKeyHandler::loadKeys(QHash<int, int> *keys)
 {
     mKeys = keys;
@@ -57,7 +63,6 @@ void XKeyHandler::loadKeys(QHash<int, int> *keys)
     }
 
     mByteArrayLen = mKeysByteArray.size();
-    qDebug() << "BYTE ARRAY LEN: " << mByteArrayLen;
 }
 
 /*-----------------------------------------------------------------+

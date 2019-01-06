@@ -29,7 +29,7 @@ public slots:
     void saveSettings();
     void loadNavigation();
     QMap<QString, QVariant> loadGroup(QString group);
-    void saveGroup(QString group, QMap<QString, QVariant>);
+    void saveGroup(QString group, QMap<QString, QVariant> groupMap);
 
 private:
     QString mSettingsFile;

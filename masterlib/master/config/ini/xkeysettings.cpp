@@ -125,7 +125,14 @@ QMap<QString, QVariant> XKeySettings::loadGroup(QString group)
     return groupMap;
 }
 
-void XKeySettings::saveGroup(QString group, QMap<QString, QVariant>)
+/*-----------------------------------------------------------------+
+| Save specific group to ini file
++------------------------------------------------------------------+
+| Parameters:
+|   group (QString): section of ini file
+|   groupMap QMap<QString, QVariant>: group settings
++-----------------------------------------------------------------*/
+void XKeySettings::saveGroup(QString group, QMap<QString, QVariant> groupMap)
 {
-
+    //TODO
 }
