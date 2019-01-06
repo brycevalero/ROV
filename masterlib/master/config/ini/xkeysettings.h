@@ -23,6 +23,8 @@ signals:
     void settingsLoaded(QSettings *settings);
     void settingsSaved(QSettings *settings);
     void groupLoaded(QString group, QMap<QString, QVariant>);
+    void groupSaved(QString group);
+    void groupRemoved(QString group);
 
 public slots:
     QSettings* loadSettings(QString file);
@@ -30,6 +32,7 @@ public slots:
     void loadNavigation();
     QMap<QString, QVariant> loadGroup(QString group);
     void saveGroup(QString group, QMap<QString, QVariant> groupMap);
+    void removeGroup(QString group);
 
 private:
     QString mSettingsFile;

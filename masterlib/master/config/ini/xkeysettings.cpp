@@ -112,9 +112,11 @@ QMap<QString, QVariant> XKeySettings::loadGroup(QString group)
     if(mSettings->childGroups().contains(group))
     {
         mSettings->beginGroup(group);
+
         foreach (const QString &key, mSettings->childKeys()) {
             groupMap.insert(key, mSettings->value(key));
         }
+
         mSettings->endGroup();
     }
 
@@ -134,5 +136,28 @@ QMap<QString, QVariant> XKeySettings::loadGroup(QString group)
 +-----------------------------------------------------------------*/
 void XKeySettings::saveGroup(QString group, QMap<QString, QVariant> groupMap)
 {
-    //TODO
+    QMap<QString, QVariant>::const_iterator i = groupMap.constBegin();
+    mSettings->beginGroup(group);
+
+    while (i != groupMap.constEnd()) {
+        mSettings->setValue(i.key(), i.value());
+        ++i;
+    }
+
+    mSettings->endGroup();
+    mSettings->sync();
+    emit groupSaved(group);
+}
+
+/*-----------------------------------------------------------------+
+| Remove specific group from ini file
++------------------------------------------------------------------+
+| Parameters:
+|   group (QString): section of ini file
++-----------------------------------------------------------------*/
+void XKeySettings::removeGroup(QString group)
+{
+    mSettings->remove(group);
+    mSettings->sync();
+    emit groupRemoved(group);
 }
