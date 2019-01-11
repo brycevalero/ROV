@@ -5,7 +5,7 @@
 #include <QObject>
 
 #include "master/masterlib.h"
-#include "master/socket/xudpsocket.h"
+#include "master/ipc/socket/xudpsocket.h"
 #include "master/config/ini/xkeysettings.h"
 #include "master/peripheral/keyboard/xkeyeventfilter.h"
 #include "master/peripheral/keyboard/xkeyhandler.h"

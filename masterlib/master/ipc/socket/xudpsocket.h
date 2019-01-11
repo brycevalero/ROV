@@ -7,7 +7,7 @@
 #include <QUdpSocket>
 
 #include "master/masterlib_global.h"
-#include "master/socket/xhostaddress.h"
+#include "master/ipc/socket/xhostaddress.h"
 
 class MASTERLIBSHARED_EXPORT XUdpSocket: public QObject
 {

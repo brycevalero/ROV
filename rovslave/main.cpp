@@ -3,13 +3,14 @@
 #include <QByteArray>
 
 #include "master/masterlib.h"
-#include "master/socket/xudpsocket.h"
+#include "master/ipc/socket/xudpsocket.h"
 #include "master/config/ini/xkeysettings.h"
 #include "master/peripheral/keyboard/xkeyhandler.h"
 #include "master/peripheral/keyboard/xkeyprotocol.h"
 #include "master/peripheral/keyboard/xkeyeventgenerator.h"
 #include "master/peripheral/keyboard/xkeyeventfilter.h"
 #include "master/controls/xkeymap.h"
+#include "master/controls/xnavigation.h"
 
 int main(int argc, char *argv[])
 {

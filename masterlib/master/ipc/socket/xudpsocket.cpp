@@ -10,7 +10,7 @@
 | Author:
 |   Bryce Valero
 +-----------------------------------------------------------------*/
-#include "Master/Socket/xudpsocket.h"
+#include "xudpsocket.h"
 
 /*-----------------------------------------------------------------+
 | Constructor

@@ -23,10 +23,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     master/masterlib.cpp \
-    master/socket/xhostaddress.cpp \
-    master/socket/xudpsocket.cpp \
-    master/socket/xtcpserver.cpp \
-    master/socket/xtcpclient.cpp \
+    master/ipc/socket/xhostaddress.cpp \
+    master/ipc/socket/xudpsocket.cpp \
+    master/ipc/socket/xtcpserver.cpp \
+    master/ipc/socket/xtcpclient.cpp \
     master/peripheral/gamepad/xgamepad.cpp \
     master/peripheral/keyboard/xkeyhandler.cpp \
     master/peripheral/keyboard/xkeyeventfilter.cpp \
@@ -35,15 +35,20 @@ SOURCES += \
     master/peripheral/keyboard/xkeyeventgenerator.cpp \
     master/controls/xkeymap.cpp \
     master/config/ini/xkeysettings.cpp \
-    master/config/ini/xsettings.cpp
+    master/config/ini/xsettings.cpp \
+    master/ipc/socket/xhostaddress.cpp \
+    master/ipc/socket/xtcpclient.cpp \
+    master/ipc/socket/xtcpserver.cpp \
+    master/ipc/socket/xudpsocket.cpp \
+    master/ipc/sharedmem/xsharedmemory.cpp
 
 HEADERS += \
     master/masterlib.h \
     master/masterlib_global.h \
-    master/socket/xhostaddress.h \
-    master/socket/xudpsocket.h \
-    master/socket/xtcpserver.h \
-    master/socket/xtcpclient.h \
+    master/ipc/socket/xhostaddress.h \
+    master/ipc/socket/xudpsocket.h \
+    master/ipc/socket/xtcpserver.h \
+    master/ipc/socket/xtcpclient.h \
     master/peripheral/gamepad/xgamepad.h \
     master/peripheral/keyboard/xkeyhandler.h \
     master/peripheral/keyboard/xkeyeventfilter.h \
@@ -52,7 +57,12 @@ HEADERS += \
     master/peripheral/keyboard/xkeyeventgenerator.h \
     master/controls/xkeymap.h \
     master/config/ini/xkeysettings.h \
-    master/config/ini/xsettings.h
+    master/config/ini/xsettings.h \
+    master/ipc/socket/xhostaddress.h \
+    master/ipc/socket/xtcpclient.h \
+    master/ipc/socket/xtcpserver.h \
+    master/ipc/socket/xudpsocket.h \
+    master/ipc/sharedmem/xsharedmemory.h
 
 unix {
     target.path = /usr/lib
