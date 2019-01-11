@@ -42,11 +42,5 @@ int main(int argc, char *argv[])
     keySettings->loadGroup("Navigation");
     udpSocket->initSocket(local);
 
-    QMap<QString, QVariant> groupMap;
-    groupMap.insert("ee", "A");
-    groupMap.insert("rf", "Y");
-    keySettings->saveGroup("SSSS", groupMap);
-    keySettings->removeGroup("SSSS");
-
     return app.exec();
 }

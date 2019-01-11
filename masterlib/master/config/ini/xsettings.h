@@ -1,5 +1,5 @@
-#ifndef XKEYSETTINGS_H
-#define XKEYSETTINGS_H
+#ifndef XSETTINGS_H
+#define XSETTINGS_H
 
 #include <QDebug>
 #include <QDir>
@@ -8,15 +8,14 @@
 #include <QSettings>
 
 #include "master/masterlib_global.h"
-#include "master/config/ini/xsettings.h"
 
-class MASTERLIBSHARED_EXPORT XKeySettings : public QObject
+class MASTERLIBSHARED_EXPORT XSettings : public QObject
 {
     Q_OBJECT
 public:
-    XKeySettings();
-    XKeySettings(QString file);
-    ~XKeySettings();
+    XSettings();
+    XSettings(QString file);
+    ~XSettings();
 
 signals:
     void navigationLoaded(QHash<int, int> *nav);
@@ -42,4 +41,4 @@ private:
     QStringList mGroups;
 };
 
-#endif // XKEYSETTINGS_H
+#endif // XSETTINGS_H

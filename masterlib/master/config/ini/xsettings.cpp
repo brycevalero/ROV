@@ -1,9 +1,9 @@
-#include "xkeysettings.h"
+#include "xsettings.h"
 
 /*-----------------------------------------------------------------+
 | Constructor
 +-----------------------------------------------------------------*/
-XKeySettings::XKeySettings()
+XSettings::XSettings()
 {
     mGroups.append("Navigation");
     mKeys = new QHash<int, int>();
@@ -14,7 +14,7 @@ XKeySettings::XKeySettings()
 /*-----------------------------------------------------------------+
 | Constructor
 +-----------------------------------------------------------------*/
-XKeySettings::XKeySettings(QString file)
+XSettings::XSettings(QString file)
 {
     mGroups.append("Navigation");
     mKeys = new QHash<int, int>();
@@ -26,13 +26,13 @@ XKeySettings::XKeySettings(QString file)
 /*-----------------------------------------------------------------+
 | Destructor
 +-----------------------------------------------------------------*/
-XKeySettings::~XKeySettings()
+XSettings::~XSettings()
 {
     delete mSettings;
     delete mKeys;
 }
 
-void XKeySettings::defaultSettings()
+void XSettings::defaultSettings()
 {
     mSettings->beginGroup("Navigation");
     mSettings->setValue("enter", QKeySequence(Qt::Key_Return));
@@ -54,7 +54,7 @@ void XKeySettings::defaultSettings()
 | Return:
 |   mSettings (QSettings): loaded settings or null
 +-----------------------------------------------------------------*/
-QSettings* XKeySettings::loadSettings(QString file)
+QSettings* XSettings::loadSettings(QString file)
 {
     bool isFile = false;
     bool hasGroups = true;
@@ -100,7 +100,7 @@ QSettings* XKeySettings::loadSettings(QString file)
 | Return:
 |   void
 +-----------------------------------------------------------------*/
-void XKeySettings::saveSettings()
+void XSettings::saveSettings()
 {
     mSettings->sync();
     emit settingsSaved(mSettings);
@@ -112,7 +112,7 @@ void XKeySettings::saveSettings()
 | Return:
 |   void
 +-----------------------------------------------------------------*/
-void XKeySettings::loadNavigation()
+void XSettings::loadNavigation()
 {
     mSettings->beginGroup("Navigation");
     int count = 0x00;
@@ -140,7 +140,7 @@ void XKeySettings::loadNavigation()
 | Return:
 |   groupMap QMap<QString, QVariant>: group settings
 +-----------------------------------------------------------------*/
-QMap<QString, QVariant> XKeySettings::loadGroup(QString group)
+QMap<QString, QVariant> XSettings::loadGroup(QString group)
 {
     QMap<QString, QVariant> groupMap;
 
@@ -171,7 +171,7 @@ QMap<QString, QVariant> XKeySettings::loadGroup(QString group)
 |   group (QString): section of ini file
 |   groupMap QMap<QString, QVariant>: group settings
 +-----------------------------------------------------------------*/
-void XKeySettings::saveGroup(QString group, QMap<QString, QVariant> groupMap)
+void XSettings::saveGroup(QString group, QMap<QString, QVariant> groupMap)
 {
     QMap<QString, QVariant>::const_iterator i = groupMap.constBegin();
     mSettings->beginGroup(group);
@@ -193,7 +193,7 @@ void XKeySettings::saveGroup(QString group, QMap<QString, QVariant> groupMap)
 | Parameters:
 |   group (QString): section of ini file
 +-----------------------------------------------------------------*/
-void XKeySettings::removeGroup(QString group)
+void XSettings::removeGroup(QString group)
 {
     mSettings->remove(group);
     mSettings->sync();

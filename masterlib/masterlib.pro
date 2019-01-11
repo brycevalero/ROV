@@ -34,7 +34,8 @@ SOURCES += \
     master/controls/xnavigation.cpp \
     master/peripheral/keyboard/xkeyeventgenerator.cpp \
     master/controls/xkeymap.cpp \
-    master/config/ini/xkeysettings.cpp
+    master/config/ini/xkeysettings.cpp \
+    master/config/ini/xsettings.cpp
 
 HEADERS += \
     master/masterlib.h \
@@ -50,7 +51,8 @@ HEADERS += \
     master/controls/xnavigation.h \
     master/peripheral/keyboard/xkeyeventgenerator.h \
     master/controls/xkeymap.h \
-    master/config/ini/xkeysettings.h
+    master/config/ini/xkeysettings.h \
+    master/config/ini/xsettings.h
 
 unix {
     target.path = /usr/lib
