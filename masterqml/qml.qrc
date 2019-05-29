@@ -41,5 +41,7 @@
         <file>material/components/qmldir</file>
         <file>material/controls/TabButton.qml</file>
         <file>material/core/qmldir</file>
+        <file>material/components/Battery.qml</file>
+        <file>material/components/CompassHeading.qml</file>
     </qresource>
 </RCC>

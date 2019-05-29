@@ -6,6 +6,9 @@ Controls.Pane {
     id: control
 
     background: Rectangle {
-        color: "#eeeeee"
+        gradient: Gradient {
+            GradientStop { position: 0; color: "#ffffff" }
+            GradientStop { position: 1; color: "#c1bbf9" }
+        }
     }
 }

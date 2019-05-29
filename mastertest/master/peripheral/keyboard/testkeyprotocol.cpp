@@ -10,7 +10,7 @@ void TestKeyProtocol::randomizeData()
     mCRC = mKeyProtocol->calculateCRC(mPayload);
 
     QByteArray data;
-    data.append(XKey::HEX_SOH);
+/*    data.append(XKey::HEX_SOH);
     data.append(0x4B); //KEY (letter k)
     data.append(mKey);
     data.append(0x4C); //Length (letter L)
@@ -19,7 +19,7 @@ void TestKeyProtocol::randomizeData()
     data.append(mPayload);
     data.append(mCRC);
     data.append(XKey::HEX_ETX);
-
+*/
     mData = data;
 }
 

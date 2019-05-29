@@ -31,11 +31,13 @@ Controls.TabButton {
     states: [
         State {
             name: "hovered"; when: control.hovered;
-            PropertyChanges { target: controlBG; color: "red" }
+            PropertyChanges { target: controlCI; color: "white" }
+            PropertyChanges { target: controlBG; color: Theme.primaryActive }
         },
         State {
             name: "checked"; when: control.checked;
-            PropertyChanges { target: controlBG; color: "blue" }
+            PropertyChanges { target: controlCI; color: "white" }
+            PropertyChanges { target: controlBG; color: Theme.primary }
         }
     ]
 }

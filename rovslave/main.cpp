@@ -4,6 +4,7 @@
 
 #include "master/masterlib.h"
 #include "master/ipc/socket/xudpsocket.h"
+#include "master/ipc/sharedmem/xsharedmemory.h"
 #include "master/config/ini/xkeysettings.h"
 #include "master/peripheral/keyboard/xkeyhandler.h"
 #include "master/peripheral/keyboard/xkeyprotocol.h"
@@ -16,6 +17,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
 
+    XSharedMemory *sharedMem = new XSharedMemory();
     XKeySettings *keySettings = new XKeySettings();
     XUdpSocket *udpSocket = new XUdpSocket();
     XKeyProtocol *keyProtocol = new XKeyProtocol();

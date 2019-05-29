@@ -4,13 +4,18 @@ import material.core 1.0
 
 Item {
     id: component
+    property int angle: 0
+    property int pixelSize: component.width * .1
+    width: 150
+    height: 150
+    rotation: angle
 
     Canvas {
         id: canvas
 
-        property var size: (component.height>component.width)?component.width:component.height
-        width: canvas.size
-        height: canvas.size
+        width: component.width * .8
+        height: component.height * .8
+        anchors.centerIn: parent
 
         onPaint: {
             var ctx = getContext("2d");
@@ -111,5 +116,41 @@ Item {
 
             ctx.fill();
         }
+    }
+
+    Text {
+        text:"N"
+        font.pixelSize: parent.pixelSize
+        width: parent.width
+        height: parent.height
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignTop
+    }
+
+    Text {
+        text:"S"
+        font.pixelSize: parent.pixelSize
+        width: parent.width
+        height: parent.height
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignBottom
+    }
+
+    Text {
+        text:"E"
+        font.pixelSize: parent.pixelSize
+        width: parent.width
+        height: parent.height
+        horizontalAlignment: Text.AlignRight
+        verticalAlignment: Text.AlignVCenter
+    }
+
+    Text {
+        text:"W"
+        font.pixelSize: parent.pixelSize
+        width: parent.width
+        height: parent.height
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignVCenter
     }
 }

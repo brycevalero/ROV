@@ -5,7 +5,7 @@
 #include <QHostAddress>
 
 #include "suite.h"
-#include "master/socket/xhostaddress.h"
+#include "master/ipc/socket/xhostaddress.h"
 
 class TestHostAddress: public TestSuite
 {
