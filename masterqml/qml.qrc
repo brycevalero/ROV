@@ -3,7 +3,6 @@
         <file>main.qml</file>
         <file>material/components/ActionButton.qml</file>
         <file>material/components/Card.qml</file>
-        <file>material/components/Compass.qml</file>
         <file>material/views/CameraView.qml</file>
         <file>material/views/DiagnosticView.qml</file>
         <file>material/views/SettingsView.qml</file>
@@ -43,5 +42,7 @@
         <file>material/core/qmldir</file>
         <file>material/components/Battery.qml</file>
         <file>material/components/CompassHeading.qml</file>
+        <file>material/components/AttitudeIndicator.qml</file>
+        <file>material/components/HeadingIndicator.qml</file>
     </qresource>
 </RCC>

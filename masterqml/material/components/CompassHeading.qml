@@ -10,7 +10,7 @@ Rectangle {
     property double tickPosition: 0
     width: 300
     height: 150
-    color:"gray"
+    color:"transparent"
     //rotation: angle
 
     onAngleChanged: {
@@ -34,7 +34,7 @@ Rectangle {
             ctx.fillStyle = Theme.primaryActive
             ctx.strokeStyle = Theme.primary
             ctx.lineWidth = 2;
-            ctx.font = "30px Georgia";
+            ctx.font = "30px Courier";
 
             //e point
             ctx.beginPath();

@@ -51,7 +51,7 @@ ApplicationWindow {
 
     StackView {
         id: stack
-        initialItem: settingsView
+        initialItem: cameraView
         anchors.fill:parent
         anchors.margins: 10
 

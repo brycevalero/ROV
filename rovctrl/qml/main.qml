@@ -9,7 +9,7 @@ ApplicationWindow {
     id: window
     visible: true
     visibility: "Windowed"
-    width: 1080
+    width: 1280
     height: 800
     title: qsTr("ROV CTRL")
 
@@ -46,9 +46,9 @@ ApplicationWindow {
         }
     }
 
-    header: ToolBar {
+    //header: ToolBar {
             // ...
-    }
+    //}
 
     footer: TabBar {
         id: bar

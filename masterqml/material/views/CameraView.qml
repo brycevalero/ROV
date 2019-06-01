@@ -3,31 +3,16 @@ import QtQml 2.11
 import QtMultimedia 5.8
 import material.components 1.0
 import material.controls 1.0
+import material.core 1.0
 
 Item {
 
-    Text {
-        text:"Camera view"
-    }
-
-    Battery {
-        id: battery
-        x:400
-        //width:50
-        //height:120
-    }
-
-    Compass {
-        id: compass
-        width: 150
-        height: 150
-        angle: 0
-    }
+    anchors.fill:parent
 
     Rectangle{
-        anchors.bottom: parent.bottom
+        anchors.top: parent.top
         width:parent.width
-        height: 150
+        height: 50
 
         CompassHeading {
             id: heading
@@ -35,6 +20,31 @@ Item {
             height: 50
             angle: 0
         }
+
+        Battery {
+            id: battery
+            y: 60
+            x: 10
+        }
+    }
+
+    HeadingIndicator {
+        id: compass
+        width: 260
+        height: 260
+        angle: 0
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20
+    }
+
+    AttitudeIndicator {
+        id: attitude
+        width: 260
+        height: 260
+        anchors.left: compass.right
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20
     }
 
     Timer {

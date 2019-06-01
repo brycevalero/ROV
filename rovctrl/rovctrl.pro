@@ -42,8 +42,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DEPENDPATH += . ../masterlib
+DEPENDPATH += ../masterlib
 #Directory where the library headers are
 INCLUDEPATH += ../masterlib
 #Directory where the .lib file is
-LIBS += -L../build-masterlib-Desktop_Qt_5_12_3_MinGW_32_bit-Debug/debug -lmasterlib
+LIBS += -L../../build-rov-Desktop_Qt_5_12_3_MinGW_32_bit-Debug/masterlib/debug -lmasterlib
