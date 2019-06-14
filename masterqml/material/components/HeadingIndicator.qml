@@ -4,10 +4,47 @@ import material.core 1.0
 
 Item {
     id: component
-    property int angle: 0
+    property real angle: 0
+    property real heading: 0
     property int pixelSize: component.width * .1
     width: 260
     height: 260
+
+    property real speed: .1
+    property real maxspeed: 20
+    property real friction: .95
+    property real dr: 0
+
+    function move() {
+        console.log(component.angle);
+        component.angle = component.angle%360
+        component.angle += dr;
+        dr *= friction;
+
+        var h = heading%360;
+
+        if(component.angle < h) {
+            if(Math.abs(component.angle - h)<180)
+               dr += speed;
+            else dr -= speed;
+        } else {
+            if(Math.abs(component.angle - h)<180)
+               dr -= speed;
+            else dr += speed;
+        }
+
+        if (dr > maxspeed) {
+            dr = maxspeed;
+        } else if (dr < -maxspeed) {
+            dr = (-maxspeed);
+        }
+    }
+
+    Timer {
+        interval: 20; running: true; repeat: true
+        onTriggered: move()
+    }
+
 
     //circle around compass
     Rectangle {
@@ -31,7 +68,7 @@ Item {
 
         //something to rotate
         Item {
-            rotation: angle
+            rotation: component.angle
             width: parent.width-20
             height: parent.height-20
             anchors.centerIn: parent

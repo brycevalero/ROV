@@ -50,14 +50,14 @@ ApplicationWindow {
             // ...
     //}
 
-    footer: TabBar {
+    /*footer: TabBar {
         id: bar
         width: parent.width
 
         TabButton { id:cameraTB; action: cameraAction; checked:true}
         TabButton { id:diagnosticTB; action: diagnosticsAction }
         TabButton { id:settingsTB; action: settingsAction}
-    }
+    }*/
 
     StackView {
         id: stack
