@@ -1,4 +1,7 @@
-import QtQuick 2.11
+import QtQuick 2.6
+import QtQuick.Extras 1.4
+import QtQuick.Controls 2.4
+import QtQuick.Controls.Styles 1.4
 import QtQml 2.11
 import QtMultimedia 5.8
 import material.components 1.0
@@ -15,17 +18,11 @@ Item {
         width:parent.width
         height: 50
 
-        CompassHeading {
+        HeadingRibbon {
             id: heading
             width: parent.width
             height: 50
             angle: 0
-        }
-
-        Battery {
-            id: battery
-            y: 60
-            x: 10
         }
     }
 
@@ -42,7 +39,7 @@ Item {
         width: parent.width
         height: 260
         anchors.bottom: parent.bottom
-        //opacity:.5
+        opacity:.5
 
         onPaint: {
             var ctx = getContext("2d");
@@ -74,8 +71,18 @@ Item {
         }
     }
 
+    Battery {
+        id: battery
+        anchors.left: parent.left
+        anchors.leftMargin: 20
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20
+        //opacity:.5
+    }
+
     HeadingIndicator {
         id: compass
+        heading: 45
         width: 220
         height: 220
         angle: 0
@@ -89,12 +96,15 @@ Item {
         interval: 5000; running: true; repeat: true
         onTriggered: {
             //console.log(compass.angle)
-            compass.heading = compass.heading +30
+            //compass.heading = Math.floor(Math.random()*(360-0+1)+0);
+            compass.heading = 360
+            console.log(compass.heading);
+
             heading.angle = heading.angle +30
             if(heading.angle > 360){
                 heading.angle = 0;
             }
-            battery.percent = battery.percent + .01
+            battery.percent = battery.percent + .1
             if(battery.percent > 1){
                 battery.percent = 0;
             }

@@ -5,10 +5,10 @@ ActionButton 1.0 ActionButton.qml
 AttitudeIndicator 1.0 AttitudeIndicator.qml
 Battery 1.0 Battery.qml
 Card 1.0 Card.qml
-CompassHeading 1.0 CompassHeading.qml
 DatePicker 1.0 DatePicker.qml
 Divider 1.0 Divider.qml
 HeadingIndicator 1.0 HeadingIndicator.qml
+HeadingRibbon 1.0 HeadingRibbon.qml
 IconButton 1.0 IconButton.qml
 PitchGauge 1.0 PitchGauge.qml
 

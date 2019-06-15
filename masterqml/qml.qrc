@@ -41,8 +41,8 @@
         <file>material/controls/TabButton.qml</file>
         <file>material/core/qmldir</file>
         <file>material/components/Battery.qml</file>
-        <file>material/components/CompassHeading.qml</file>
         <file>material/components/AttitudeIndicator.qml</file>
         <file>material/components/HeadingIndicator.qml</file>
+        <file>material/components/HeadingRibbon.qml</file>
     </qresource>
 </RCC>
