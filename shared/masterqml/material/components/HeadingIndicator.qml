@@ -71,7 +71,7 @@ Item {
         }
         component.angle = tempAngle%360;
 
-        console.log("Angle:" + angle + " ACC:" + dr + " Friction:" + friction);
+        //console.log("Angle:" + angle + " ACC:" + dr + " Friction:" + friction);
     }
 
     Timer {

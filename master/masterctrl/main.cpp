@@ -5,6 +5,7 @@
 #include <QObject>
 
 #include "master/masterlib.h"
+#include "master/ipc/sharedmem/xsharedmemory.h"
 #include "master/ipc/socket/xudpsocket.h"
 #include "master/config/ini/xkeysettings.h"
 #include "master/peripheral/keyboard/xkeyeventfilter.h"
@@ -18,6 +19,10 @@ int main(int argc, char *argv[])
     XKeyHandler *keyHandler = new XKeyHandler();
     XKeyProtocol *keyProtocol = new XKeyProtocol();
     XUdpSocket *udpSocket = new XUdpSocket();
+
+    //test stuff
+    XSharedMemory *sharedMem = new XSharedMemory();
+    sharedMem->writeMem();
 
     QObject::connect(keySettings, SIGNAL(navigationLoaded(QHash<int,int>*)), keyHandler, SLOT(loadKeys(QHash<int,int>*)));
     QObject::connect(keyEventFilter, SIGNAL(keyEvent(int,bool)), keyHandler, SLOT(setKeyByCode(int,bool)));

@@ -17,7 +17,6 @@ int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
 
-    XSharedMemory *sharedMem = new XSharedMemory();
     XKeySettings *keySettings = new XKeySettings();
     XUdpSocket *udpSocket = new XUdpSocket();
     XKeyProtocol *keyProtocol = new XKeyProtocol();
@@ -25,6 +24,10 @@ int main(int argc, char *argv[])
     XKeyEventGenerator *keyEventGenerator = new XKeyEventGenerator();
     XKeyMap *keyMap = new XKeyMap();
     XNavigation *navigation = new XNavigation();
+
+    //test stuff
+    XSharedMemory *sharedMem = new XSharedMemory();
+    sharedMem->readMem();
 
     QObject::connect(keySettings, SIGNAL(settingsLoaded(QSettings*)), keyMap, SLOT(setKeyMap(QSettings*)));
     QObject::connect(keySettings, SIGNAL(navigationLoaded(QHash<int,int>*)), keyHandler, SLOT(loadKeys(QHash<int,int>*)));

@@ -96,8 +96,8 @@ Item {
         interval: 5000; running: true; repeat: true
         onTriggered: {
             //console.log(compass.angle)
-            //compass.heading = Math.floor(Math.random()*(360-0+1)+0);
-            compass.heading = 360
+            compass.heading = Math.floor(Math.random()*(360-0+1)+0);
+            //compass.heading = 360
             console.log(compass.heading);
 
             heading.angle = heading.angle +30
