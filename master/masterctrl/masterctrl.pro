@@ -12,9 +12,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-release: DESTDIR = build/release
-debug:   DESTDIR = build/debug
-
+DESTDIR = build
 OBJECTS_DIR = $$DESTDIR/.obj
 MOC_DIR = $$DESTDIR/.moc
 RCC_DIR = $$DESTDIR/.qrc
@@ -48,4 +46,4 @@ INCLUDEPATH += $$PWD/../../shared/masterlib
 #Directory where the .lib file is
 #LIBS += -L../../build-rov-Desktop_Qt_5_12_3_MinGW_32_bit-Debug/masterlib/debug -lmasterlib
 #LIBS += -L../build-masterlib-Desktop_Qt_5_12_2_MinGW_32_bit-Debug/debug -lmasterlib
-LIBS += -L$$OUT_PWD/../../shared/masterlib/build/debug -lmasterlib
+LIBS += -L$$OUT_PWD/../../shared/masterlib/build -lmasterlib
