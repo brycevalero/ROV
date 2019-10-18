@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>StatusBar.qml</file>
+        <file>SettingsView.qml</file>
+        <file>DiagnosticView.qml</file>
+        <file>CameraView.qml</file>
     </qresource>
 </RCC>

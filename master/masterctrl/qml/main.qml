@@ -1,9 +1,13 @@
 import QtQuick 2.9
 import QtQuick.Window 2.2
 import QtQuick.Controls 2.4
+
+//Added for the styling
 import material.components 1.0
 import material.controls 1.0
-import material.views 1.0
+import material.core 1.0
+
+import registered.comm 1.0
 
 ApplicationWindow {
     id: window
@@ -13,57 +17,53 @@ ApplicationWindow {
     height: 800
     title: qsTr("ROV CTRL")
 
+    ActionGroup { id: windowGroup; exclusive: true }
+    ActionGroup { id: viewsGroup; exclusive: true }
+
     Action { id: open; text: qsTr("Open..."); checkable: true }
-    Action { id: close; text: qsTr("Close") }
-    Action { id: fullScreen; text: qsTr("FullScreen"); onTriggered: window.visibility = "FullScreen"}
-    Action { id: windowed; text: qsTr("Windowed"); onTriggered: window.visibility = "Windowed"}
-    Action { id: cameraAction; text: qsTr("Camera"); onTriggered: {stack.replace(cameraView);cameraTB.checked=true}}
-    Action { id: diagnosticsAction; text: qsTr("Diagnostics"); onTriggered: {stack.replace(diagnosticView);diagnosticTB.checked=true} }
-    Action { id: settingsAction; text: qsTr("Settings"); onTriggered: {stack.replace(settingsView);settingsTB.checked=true} }
+    Action { id: quit; text: qsTr("Quit"); onTriggered: Qt.quit() }
+    Action { id: fullScreen; text: qsTr("FullScreen"); checkable: true; ActionGroup.group: windowGroup; onTriggered: window.visibility = "FullScreen"}
+    Action { id: windowed; text: qsTr("Windowed"); checkable: true; checked: true; ActionGroup.group: windowGroup; onTriggered: window.visibility = "Windowed"}
+    Action { id: cameraAction; text: qsTr("Camera"); checkable: true; checked: true; ActionGroup.group: viewsGroup; onTriggered: {stack.replace(cameraView);}}
+    Action { id: diagnosticsAction; text: qsTr("Diagnostics"); checkable: true; ActionGroup.group: viewsGroup; onTriggered: {stack.replace(diagnosticView);}}
+    Action { id: settingsAction; text: qsTr("Settings"); checkable: true; ActionGroup.group: viewsGroup; onTriggered: {stack.replace(settingsView);}}
 
     menuBar: MenuBar {
         Menu {
             title: "File"
-            MenuItem { action: open }
-            MenuItem { action: close }
-
-            Menu {
-               title: qsTr("Advanced")
-            }
+            MenuItem { action: quit }
         }
 
         Menu {
             title: "Edit"
-            MenuItem { action: cameraAction }
-            MenuItem { action: diagnosticsAction }
-            MenuItem { action: settingsAction }
         }
 
         Menu {
             title: "View"
             MenuItem { action: fullScreen }
             MenuItem { action: windowed }
+            MenuSeparator {}
+            MenuItem { action: cameraAction }
+            MenuItem { action: diagnosticsAction }
+            MenuItem { action: settingsAction }
         }
     }
 
-    //header: ToolBar {
-            // ...
-    //}
+    MainComm{
+        id: mainComm
+        focus: true
+        anchors.fill: parent
 
-    /*footer: TabBar {
-        id: bar
-        width: parent.width
-
-        TabButton { id:cameraTB; action: cameraAction; checked:true}
-        TabButton { id:diagnosticTB; action: diagnosticsAction }
-        TabButton { id:settingsTB; action: settingsAction}
-    }*/
+        Component.onCompleted: {
+            console.log("IS THIS ONLINE")
+            console.log(mainComm.sensors.online)
+        }
+    }
 
     StackView {
         id: stack
         initialItem: cameraView
         anchors.fill:parent
-        //anchors.margins: 10
 
         CameraView {
             id:cameraView
@@ -79,5 +79,15 @@ ApplicationWindow {
             id:settingsView
             parent:null
         }
+    }
+
+    //NavigationComm{
+    //    id: navcom
+    //    focus: true
+    //    anchors.fill: parent
+    //}
+
+    footer: StatusBar{
+        id: statusBar
     }
 }

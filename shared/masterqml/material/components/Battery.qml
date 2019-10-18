@@ -8,6 +8,7 @@ Item {
     property int pixelSize: component.width * .1
     property int radius: 6
     property double percent: .50
+    property color color: Theme.primary
     width: 100
     height: 38
     rotation: angle
@@ -24,7 +25,7 @@ Item {
         anchors.centerIn: parent
         width: parent.width
         height: parent.height * .4
-        color:Theme.primary
+        color: component.color
         radius: component.radius
     }
 
@@ -33,7 +34,7 @@ Item {
         anchors.bottom: parent.bottom
         width: parent.width * .92
         height: parent.height
-        color:Theme.primary
+        color: component.color
         radius: component.radius
 
         //the emptyness

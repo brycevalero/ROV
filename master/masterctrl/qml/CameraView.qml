@@ -71,15 +71,6 @@ Item {
         }
     }
 
-    Battery {
-        id: battery
-        anchors.left: parent.left
-        anchors.leftMargin: 20
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 20
-        //opacity:.5
-    }
-
     HeadingIndicator {
         id: compass
         heading: 45
@@ -103,10 +94,6 @@ Item {
             heading.angle = heading.angle +30
             if(heading.angle > 360){
                 heading.angle = 0;
-            }
-            battery.percent = battery.percent + .1
-            if(battery.percent > 1){
-                battery.percent = 0;
             }
         }
     }

@@ -20,16 +20,23 @@ UI_DIR = $$DESTDIR/.ui
 
 #HEADERS +=
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    src/comm/cameracomm.cpp \
+    src/comm/maincomm.cpp \
+    src/comm/navigationcomm.cpp \
+    src/comm/sensorcomm.cpp \
+    src/events/cameraeventfilter.cpp \
+    src/events/navigationeventfilter.cpp \
+    src/qmltyperegistrar.cpp
 
 RESOURCES += qml/qml.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
-#QML_IMPORT_PATH += $$PWD/../masterqml
+QML_IMPORT_PATH += $$PWD/../../shared/masterqml
 QML2_IMPORT_PATH += $$PWD/../../shared/masterqml
 
 # Additional import path used to resolve QML modules just for Qt Quick Designer
-QML_DESIGNER_IMPORT_PATH =
+QML_DESIGNER_IMPORT_PATH += $$PWD/../../shared/masterqml
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -47,3 +54,12 @@ INCLUDEPATH += $$PWD/../../shared/masterlib
 #LIBS += -L../../build-rov-Desktop_Qt_5_12_3_MinGW_32_bit-Debug/masterlib/debug -lmasterlib
 #LIBS += -L../build-masterlib-Desktop_Qt_5_12_2_MinGW_32_bit-Debug/debug -lmasterlib
 LIBS += -L$$OUT_PWD/../../shared/masterlib/build -lmasterlib
+
+HEADERS += \
+    src/comm/cameracomm.h \
+    src/comm/maincomm.h \
+    src/comm/navigationcomm.h \
+    src/comm/sensorcomm.h \
+    src/events/cameraeventfilter.h \
+    src/events/navigationeventfilter.h \
+    src/qmltyperegistrar.h
